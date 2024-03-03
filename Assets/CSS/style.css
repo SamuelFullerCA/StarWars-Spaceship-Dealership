@@ -1,0 +1,26 @@
+.card{
+   
+    height: 35vh;
+}
+
+#displayedcards{
+    justify-content: center
+}
+
+.starship{
+    border: 3px solid black;
+    /* width: 400px; */
+    height: 450px;
+}
+
+#banner{
+    /* messed with margins to align banner with searchbox; */
+    height: 35vh;
+    border: 3px solid black;
+    margin-top: 8px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    
+}
+

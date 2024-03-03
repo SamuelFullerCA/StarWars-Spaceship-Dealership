@@ -7,15 +7,74 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="./Assets/CSS/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="./Assets/CSS/style.css"/>
+
+    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
     <title>Document</title>
 </head>
 
 
 <body>
+    <header>
+        <nav>
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo">logo</a>
+              <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="sass.html">Sass</a></li>
+                <li><a href="badges.html">Components</a></li>
+                <li><a href="collapsible.html">JavaScript</a></li>
+              </ul>
+            </div>
+          </nav>
+    </header>
 
+    <main>
+        <!-- section wrap for search box and banner -->
+        <div class="row" id="searchBanner">
+            <!-- searchbox -->
+            <aside class="col s3 ">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light"></div>
+                <div class="card-content">
+                  <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                  <div class="row">
+                    <div class="col s12">
+                      <div class="row">
+                        <div class="input-field col s12">
+                          <i class="material-icons prefix">textsms</i>
+                          <input type="text" id="autocomplete-input" class="autocomplete">
+                          <label for="autocomplete-input">Autocomplete</label>
+                          <button id="searchBtn"  class="waves-effect waves-light btn">search</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">Advanced Search<i class="material-icons right">close</i></span>
+                  <p>advanced search goes here</p>
+                </div>
+              </div>
+            </aside>
+              <!-- banner -->
+            <figure class="col s8" id="banner">
+                hero banenr
+            </figure>
+        </div>
 
+        <!-- section wrap for spaceship cards -->
+    <section id="displayedCards" class="row">
+
+        </section>
+    </main>
 
 
 </body>
+<!-- file that allows us to use materalze ui -->
 <script type="text/javascript" src="./Assets/JS/materialize.min.js"></script>
+<!-- file for js functionality outside materalize -->
+<script type="text/javascript" src="./Assets/JS/script.js"></script>
+<!-- additional js file to handle all materialize js functionality so base js page doesnt get cluttered -->
+<script type="text/javascript" src="./Assets/JS/materalize.js"></script>
+
 </html>
