@@ -1,6 +1,10 @@
-.card{
-   
-    height: 35vh;
+
+*{
+    /* background-image: url(../Images/star-wars-spaceships-death-star.avif); */
+}
+
+#searchBox{
+   background-color: aliceblue;
 }
 
 #displayedcards{
@@ -24,3 +28,20 @@
     
 }
 
+
+.imgCss{
+    border-radius: 25px;
+}
+
+
+
+.brand-logo{
+    margin-left: 25px;
+    font-family: Aurebesh;
+}
+
+
+@font-face {
+    font-family: Aurebesh;
+    src: url(../Aurebesh.ttf);
+}
