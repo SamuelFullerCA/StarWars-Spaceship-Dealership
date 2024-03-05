@@ -27,6 +27,7 @@ header{
 main{
     height: 100vh;
 
+
     /* styles the while searchbox card */
     #searchBox{
         background-color: #212121;
@@ -46,14 +47,14 @@ main{
     /* styles the starship card and everything inside */
     .starship{
         border-radius: 15px;
-        height: 450px;
         background-color: #212121;
         text-align: center;
         box-shadow: 7px 7px rgba(82, 82, 82, 0.25);
-        margin: 50px;
+        margin: 2%;
+        padding: 15px;
         
         /* styles the ship name */
-        h3{
+        h3 {
             margin-top: 8px;
             color: aliceblue;
             font-size: 175%;
@@ -91,7 +92,12 @@ main{
     }
 }
 
-
+/* Container for all cards */
+#divWrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px;
+}
 
 /* adds the Aurebesh font */
 @font-face {
