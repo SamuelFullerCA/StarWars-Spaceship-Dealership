@@ -7,20 +7,22 @@ let imageData;
 //Function that pulls an array of starships based off of user input
 async function searhApi(){
 
+  //gets the value the user inputs in the search bar
   formValue = document.querySelector('#autocomplete-input').value
-  //quick test for google image api
-  test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&q=${formValue}`
 
-  const response = await fetch(test2)
-  let fetchedData = await response.json()
-  console.log(fetchedData)
-  imageData = fetchedData
+  // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
+  // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
+  // test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&q=${formValue}`
+  // const response = await fetch(test2)
+  // let fetchedData = await response.json()
+  // console.log(fetchedData)
+  // imageData = fetchedData
 
 
-
+  //assigns the api with the search parameter of the users input to a variable
   userSearch = `https://swapi.dev/api/starships/?search=${formValue}`
 
-  //fetches the data and stores it to the cathall variable
+  //fetches the data and stores it to the catchall variable
   const response2 = await fetch(userSearch)
   let fetchedData2 = await response2.json()
   console.log(fetchedData2)
@@ -28,68 +30,91 @@ async function searhApi(){
 
   
   //deletes the cards generated from previous search
-  const previousCards = document.querySelector('.starship')
+  const previousCards = document.querySelector('#divWrap')
   if (previousCards !== null){
     previousCards.remove()
   }
 
-  //runs the function to create a card
+  //runs the function to create cards
   starshipCards()
 
+}
 
 //function to generate card
 function starshipCards(){
 
-let starshipCard = document.createElement('section')
-//col s3 class allows it to accupy 3/12 of the row, so 4 cards per row
-starshipCard.setAttribute('class', 'starship ship1 col s3')
+  //create a div wrap outside the for loop that all the cards will live in
+  //the wrap is used to clear the cards on a new search (see line 32-36)
+  let divWrap = document.createElement('div')
+  divWrap.setAttribute('id', 'divWrap')
+  document.querySelector('#displayedCards').append(divWrap)
 
-let starshipImg = document.createElement('IMG')
-starshipImg.setAttribute('src', `${imageData.items[0].link}`)
-starshipImg.setAttribute('width', '300')
-starshipImg.setAttribute('height', '300')
-starshipImg.setAttribute('class', 'imgCss')
+//for loop cenerating cards
+  for(i = 0; i < 10; i++){
 
+    //generates the card
+    let starshipCard = document.createElement('section')
+    //col s3 class allows it to accupy 3/12 of the row, so 4 cards per row
+    starshipCard.setAttribute('class', ` center-align starship ship${i} col s2`)
 
-let starshipName = document.createElement('h3')
-starshipName.textContent = `${searchedData.results[0].name}`
+    //generates the image
+    let starshipImg = document.createElement('IMG')
+    // starshipImg.setAttribute('src', `${imageData.items[0].link}`)
+    // placeholder for max image search
+    starshipImg.src = './Assets/Images/Placeholder.jpg'
+    starshipImg.setAttribute('width', '275')
+    starshipImg.setAttribute('height', '150')
+    starshipImg.setAttribute('class', 'imgCss')
 
-let starshipModel = document.createElement('p')
-starshipModel.textContent = `${searchedData.results[0].model}`
+    //generates the ship name
+    let starshipName = document.createElement('h3')
+    starshipName.textContent = `${searchedData.results[i].name}`
 
-let addCart = document.createElement('button')
-addCart.setAttribute('id', `${searchedData.results[0].name}`)
+    //generates the word cost I put this here so the word "cost" sits about the actuall number
+    //(there is probably a better way to do this)
+    let costText = document.createElement('h4')
+    costText.textContent = `Cost:`
 
+    //generates the cost in credits
+    let starshipCost = document.createElement('h4')
+    starshipCost.textContent = `${searchedData.results[i].cost_in_credits} Credits`
 
-document.querySelector('#displayedCards').append(starshipCard)
-document.querySelector('.ship1').append(starshipName, starshipModel, starshipImg, addCart)
+    //seperated card body to allow customization difference between top half and lower half of card
+    let cardBody = document.createElement('div')
+    cardBody.setAttribute('id', `cardBodycss`)
 
+    //generates the model text
+    let starshipModel = document.createElement('p')
+    starshipModel.textContent = `Model: ${searchedData.results[i].model}`
 
-// shaceship variables we can use include:
-// cargo_capacity cost_in_credits crew hyperdrive_rating manufacturer name starship_class model max_atmosphering_speed passengers consumables
+    // generates the MGLT text
+    let shipMglt = document.createElement('p')
+    shipMglt.textContent = `MGLT: ${searchedData.results[i].MGLT} `
 
+    // generates the hyperdrive rating text
+    let shipHdrive = document.createElement('p')
+    shipHdrive.textContent = `Hyperdrive Rating: ${searchedData.results[i].hyperdrive_rating} `
 
+    //generates the purchase button with materalize features
+    let addCart = document.createElement('button')
+    addCart.setAttribute('class', `waves-effect waves-light btn addCart`)
+    addCart.setAttribute('id', `${searchedData.results[i].name}`)
+    addCart.textContent = `Purchase`
 
+    //appends the card to the wrap
+    divWrap.append(starshipCard)
+    //appends the mode, mglt, and hdrive to the body
+    cardBody.append(starshipModel, shipMglt, shipHdrive)
+    //apends the name, image, cost text, cost, body, and purchse button to the card
+    document.querySelector(`.ship${i}`).append(starshipName, starshipImg, costText, starshipCost, cardBody, addCart )
 
+  }
 
 }
-}
 
 
+//runs the fuctions on search button click
 const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
-
-
-// async function googleimageApi(){
-
-//   test = 'https://cse.google.com/cse.js?cx=92c28db4b1c7148d3'
-//   test2 = 'https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&q=deathstar'
-
-//   const response = await fetch(test2)
-//   let fetchedData = await response.json()
-//   imageData = fetchedData
-
-//   console.log(fetchedData)
-// }
 
 

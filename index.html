@@ -16,34 +16,40 @@
 
 <body>
     <header>
-        <nav>
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo">spaceship dealership</a>
-              <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="sass.html">Sass</a></li>
-                <li><a href="badges.html">Components</a></li>
-                <li><a href="collapsible.html">JavaScript</a></li>
-              </ul>
-            </div>
-          </nav>
+          <!-- Dropdown Structure -->
+          <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#!">one</a></li>
+          <li><a href="#!">two</a></li>
+          <li class="divider"></li>
+          <li><a href="#!">three</a></li>
+        </ul>
+        <nav id="navbarcss" class=" grey darken-4">
+        <div id="headercss" class="nav-wrapper  ">
+         <a href="#!" class="pageName">Starship Dealership</a>
+         <ul class="right hide-on-med-and-down">
+        <!-- Dropdown Trigger -->
+        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Shopping Cart 🛒<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
     </header>
 
     <main>
         <!-- section wrap for search box and banner -->
         <div class="row">
             <!-- searchbox -->
-            <aside class="col s3" >
+            <aside id="searchBoxcss" class="col s3" >
                 <div id="searchBox" class="card">
                     <div class="card-image waves-effect waves-block waves-light"></div>
                 <div class="card-content" id="searchBox">
-                  <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+                  <span class="card-title activator">Search for starships<i class="material-icons right">more_vert</i></span>
                   <div class="row">
                     <div class="col s12">
                       <div class="row">
                         <div class="input-field col s12">
                           <i class="material-icons prefix">textsms</i>
                           <input type="text" id="autocomplete-input" class="autocomplete">
-                          <label for="autocomplete-input">Autocomplete</label>
+                          <label id="labelcss" for="autocomplete-input">Starship</label>
                           <button id="searchBtn"  class="waves-effect waves-light btn">search</button>
                         </div>
                       </div>
@@ -57,16 +63,16 @@
               </div>
             </aside>
               <!-- banner -->
-            <figure class="col s8" id="banner">
+            <!-- <figure class="col s8" id="banner">
                 hero banenr
-            </figure>
+            </figure> -->
         </div>
 
         <!-- section wrap for spaceship cards -->
     <section id="displayedCards" class="row">
 
         </section>
-    </main>
+    </main >
 
 
 </body>
