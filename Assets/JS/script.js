@@ -10,13 +10,6 @@ async function searhApi(){
   //gets the value the user inputs in the search bar
   formValue = document.querySelector('#autocomplete-input').value
 
-  // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
-  // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
-  // test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&q=${formValue}`
-  // const response = await fetch(test2)
-  // let fetchedData = await response.json()
-  // console.log(fetchedData)
-  // imageData = fetchedData
 
 
   //assigns the api with the search parameter of the users input to a variable
@@ -41,7 +34,7 @@ async function searhApi(){
 }
 
 //function to generate card
-function starshipCards(){
+async function starshipCards(){
 
   //create a div wrap outside the for loop that all the cards will live in
   //the wrap is used to clear the cards on a new search (see line 32-36)
@@ -50,22 +43,32 @@ function starshipCards(){
   document.querySelector('#displayedCards').append(divWrap)
 
 //for loop cenerating cards
-  for(i = 0; i < 10; i++){
+  for(i = 0; i < searchedData.results.length; i++){
 
     //generates the card
     let starshipCard = document.createElement('section')
     //col s3 class allows it to accupy 3/12 of the row, so 4 cards per row
     starshipCard.setAttribute('class', ` center-align starship ship${i}`)
 
-    //generates the image
-    let starshipImg = document.createElement('IMG')
-    // starshipImg.setAttribute('src', `${imageData.items[0].link}`)
+ // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
+// UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
+    test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedData.results[i].model}`
+    const response = await fetch(test2)
+    let fetchedData = await response.json()
+    console.log(fetchedData)
+    imageData = fetchedData
+
+ 
+    //generates the image 
+    let starshipImg =  document.createElement('IMG')
+    starshipImg.setAttribute('src', `${imageData.items[i].link}`)
     // placeholder for max image search
-    starshipImg.src = './Assets/Images/Placeholder.jpg'
+    // starshipImg.src = './Assets/Images/Placeholder.jpg'
     starshipImg.setAttribute('width', '275')
     starshipImg.setAttribute('height', '150')
     starshipImg.setAttribute('class', 'imgCss')
-
+      
+  
     //generates the ship name
     let starshipName = document.createElement('h3')
     starshipName.textContent = `${searchedData.results[i].name}`
@@ -103,6 +106,7 @@ function starshipCards(){
 
     //appends the card to the wrap
     divWrap.append(starshipCard)
+    
     //appends the mode, mglt, and hdrive to the body
     cardBody.append(starshipModel, shipMglt, shipHdrive)
     //apends the name, image, cost text, cost, body, and purchse button to the card
@@ -116,5 +120,4 @@ function starshipCards(){
 //runs the fuctions on search button click
 const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
-
 
