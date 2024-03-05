@@ -23,13 +23,17 @@ header{
     }
 }
 
+/* Styling for the header */
+#headercss {
+}
+
 /* all style elements inside the mains section are nested in here */
 main{
     height: 100vh;
 
 
     /* styles the while searchbox card */
-    #searchBox{
+    #searchBox {
         background-color: #212121;
         color: aliceblue;
         border-radius: 25px;
@@ -96,7 +100,14 @@ main{
 #divWrap {
     display: flex;
     flex-wrap: wrap;
-    margin: 50px;
+    margin: 2%;
+    margin-top: 0px;
+}
+
+/* positioning for the search box */
+#searchBoxcss {
+    margin-top: 50px;
+    margin-left: 50px;
 }
 
 /* adds the Aurebesh font */
@@ -104,3 +115,34 @@ main{
     font-family: Aurebesh;
     src: url(../Aurebesh.ttf);
 }
+
+/* Tablets 992px*/
+@media screen and (max-width: 1139px) {
+    .starship{
+        width: 45%;
+    }
+
+    #divWrap {
+        margin: 5%;
+        margin-top: 0px;
+    }
+
+    #searchBoxcss {
+        width: 93%;
+        margin: 4%;
+        margin-top: 50px;
+        margin-bottom: 0px;
+    }
+  }
+  
+  /* Large smartphones 768px*/
+  @media screen and (max-width: 768px) {
+   
+  }
+  
+  /* Small smartphones 576px*/
+  @media screen and (max-width: 800px) {
+    .starship {
+        width: 100%;
+    }
+  }
