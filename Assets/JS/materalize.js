@@ -52,6 +52,9 @@ const instances = M.Dropdown.init(elems,{
     coverTrigger: false
 });
 
+// //carousel wrap
+// const wheel = document.querySelector('.carousel');
+// M.Carousel.init(wheel, {})
 
 
 
