@@ -48,7 +48,7 @@ async function starshipCards(){
     //generates the card
     let starshipCard = document.createElement('section')
     //col s3 class allows it to accupy 3/12 of the row, so 4 cards per row
-    starshipCard.setAttribute('class', ` center-align starship ship${i} col s2`)
+    starshipCard.setAttribute('class', ` center-align starship ship${i}`)
 
  // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
 // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
