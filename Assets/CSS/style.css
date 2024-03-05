@@ -1,46 +1,99 @@
 
-*{
-    /* background-image: url(../Images/star-wars-spaceships-death-star.avif); */
+/* backround image for page */
+body{
+    background-image: url(../Images/backgroundStars.jpg);
 }
 
-#searchBox{
-   background-color: aliceblue;
-}
-
-#displayedcards{
-    justify-content: center
-}
-
-.starship{
-    border: 3px solid black;
-    /* width: 400px; */
-    height: 450px;
-}
-
-#banner{
-    /* messed with margins to align banner with searchbox; */
-    height: 35vh;
-    border: 3px solid black;
-    margin-top: 8px;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
-    
-}
-
-
-.imgCss{
-    border-radius: 25px;
-}
-
-
-
-.brand-logo{
-    margin-left: 25px;
+/* all style elements inside the header section are nested in here */
+header{
     font-family: Aurebesh;
+
+    /* styles the navbar */
+    #navbarcss{
+       
+        border-radius: 50px;
+        max-width: 80vw;
+        margin: auto;
+     }
+     
+      /* styles the nav bar text */
+    .pageName{
+        margin-left: 25px;
+        font-family: Aurebesh;
+    }
+}
+
+/* all style elements inside the mains section are nested in here */
+main{
+    height: 100vh;
+
+    /* styles the while searchbox card */
+    #searchBox{
+        background-color: #212121;
+        color: aliceblue;
+        border-radius: 25px;
+     }
+
+     /*styles the banner card */
+     #banner{
+        height: 35vh;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 15px;
+    }
+
+
+
+    /* styles the starship card and everything inside */
+    .starship{
+        border-radius: 15px;
+        height: 450px;
+        background-color: #212121;
+        text-align: center;
+        box-shadow: 7px 7px rgba(82, 82, 82, 0.25);
+        margin: 50px;
+        
+        /* styles the ship name */
+        h3{
+            margin-top: 8px;
+            color: aliceblue;
+            font-size: 175%;
+
+         }
+
+         /* styles the ship cost */
+         h4{
+            margin-top: 10px;
+            margin: 0;
+            color: aliceblue;  
+            font-size: 130%; 
+         }
+
+         /* styles the card body 
+         (this only includes model, mglt, and Hdrive rating */
+        #cardBodycss{
+            text-align: left;
+            color: aliceblue;
+        }
+
+        /* styles the purchase button */
+        .addCart{
+            font-size: 75%;
+            color: aliceblue;
+            background-color: rgb(48, 134, 48);
+            width: 90px;
+            height: 40px;
+        }
+
+        /* styles the image */
+        .imgCss{
+            border-radius: 25px;
+        }
+    }
 }
 
 
+
+/* adds the Aurebesh font */
 @font-face {
     font-family: Aurebesh;
     src: url(../Aurebesh.ttf);

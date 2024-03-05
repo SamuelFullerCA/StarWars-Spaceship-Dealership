@@ -46,4 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   });
 
+//trigers the cart dropdown menu
+const elems = document.querySelectorAll('.dropdown-trigger');
+const instances = M.Dropdown.init(elems,{
+    coverTrigger: false
+});
+
+
+
+
 
