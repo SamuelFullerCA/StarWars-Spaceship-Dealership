@@ -47,7 +47,7 @@ async function starshipCards(){
     //generates the card
     let starshipCard = document.createElement('section')
     //col s3 class allows it to accupy 3/12 of the row, so 4 cards per row
-    starshipCard.setAttribute('class', ` center-align starship ship${i}`)
+    starshipCard.setAttribute('class', ` card center-align starship ship${i}`)
 
  // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
 // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
@@ -70,6 +70,7 @@ async function starshipCards(){
   
     //generates the ship name
     let starshipName = document.createElement('h3')
+    starshipName.setAttribute('class', 'activator')
     starshipName.textContent = `${searchedData.results[i].name}`
 
     //generates the word cost I put this here so the word "cost" sits about the actuall number
@@ -104,13 +105,94 @@ async function starshipCards(){
     addCart.setAttribute('onclick', "M.toast({html: 'Added to cart!', classes: 'rounded'})")
     addCart.textContent = `Purchase`
 
+    let revealActivator = document.createElement('i');
+    revealActivator.setAttribute('class', 'material-icons right');
+    revealActivator.textContent = "more_vert";
+
+    let revealDiv = document.createElement('div');
+    revealDiv.setAttribute('class', 'card-reveal');
+    revealDiv.setAttribute("style", "background-color: #212121;");
+
+    let revealSpan = document.createElement('span');
+    revealSpan.setAttribute('class', 'card-title');
+    revealSpan.setAttribute('style', 'color: white')
+    revealSpan.textContent = 'Specifications'
+
+    let revealName = document.createElement('p');
+    revealName.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealName.textContent = `Name: ${searchedData.results[i].name}`;
+
+    let revealModel = document.createElement('p');
+    revealModel.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealModel.textContent = `Model: ${searchedData.results[i].model}`;
+
+    let revealManufacturer = document.createElement('p');
+    revealManufacturer.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealManufacturer.textContent = `Manufacturer: ${searchedData.results[i].manufacturer}`;
+
+    let revealCost = document.createElement('p');
+    revealCost.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealCost.textContent = `Cost: ${searchedData.results[i].cost_in_credits}`;
+
+    let revealLength = document.createElement('p');
+    revealLength.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealLength.textContent = `Length: ${searchedData.results[i].length}`;
+
+    let revealSpeed = document.createElement('p');
+    revealSpeed.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealSpeed.textContent = `Atmospheric Speed: ${searchedData.results[i].max_atmosphering_speed}`;
+
+    let revealCrew = document.createElement('p');
+    revealCrew.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealCrew.textContent = `Crew Size: ${searchedData.results[i].crew}`;
+
+    let revealPassengers = document.createElement('p');
+    revealPassengers.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealPassengers.textContent = `Passengers: ${searchedData.results[i].passengers}`;
+
+    let revealCargo = document.createElement('p');
+    revealCargo.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealCargo.textContent = `Cargo Capacity: ${searchedData.results[i].cargo_capacity}`;
+
+    let revealHyper = document.createElement('p');
+    revealHyper.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealHyper.textContent = `Hyperdrive Rating: ${searchedData.results[i].hyperdrive_rating}`;
+
+    let revealMGLT = document.createElement('p');
+    revealMGLT.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealMGLT.textContent = `MGLT: ${searchedData.results[i].MGLT}`;
+
+    let revealClass = document.createElement('p');
+    revealClass.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+    revealClass.textContent = `Starship Class: ${searchedData.results[i].starship_class}`;
+
+    let revealClose = document.createElement('i');
+    revealClose.setAttribute('class', 'material-icons right');
+    revealClose.textContent = 'close'
+
+    starshipName.append(revealActivator)
+    revealSpan.append(revealClose, revealName, revealModel, revealClass, revealManufacturer, revealCost, revealLength, revealSpeed, revealCrew, revealPassengers, revealCargo, revealHyper, revealMGLT)
+
+    revealDiv.append(revealSpan)
+
+
+
+
+
+
+
+
+
+
+
+
     //appends the card to the wrap
     divWrap.append(starshipCard)
     
     //appends the mode, mglt, and hdrive to the body
     cardBody.append(starshipModel, shipMglt, shipHdrive)
     //apends the name, image, cost text, cost, body, and purchse button to the card
-    document.querySelector(`.ship${i}`).append(starshipName, starshipImg, costText, starshipCost, cardBody, addCart )
+    document.querySelector(`.ship${i}`).append(starshipName, starshipImg, costText, starshipCost, cardBody, addCart, revealDiv)
 
   }
 
@@ -121,6 +203,36 @@ async function starshipCards(){
 const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
 
+
+
+
+const hyperdriveClass = document.querySelector('#test5')
+hyperdriveClass.addEventListener("click", function(){
+
+  hclassValue = document.querySelector('#test5').value
+  localStorage.setItem('hclassValue',  hclassValue)
+
+})
+
+
+// hyperdriveClass.addEventListener("mouseup", () => {
+
+//   hclassValue = document.querySelector('#test5').value
+//     localStorage.setItem('hclassValue',  hclassValue)
+
+// });
+
+  // priceRange = [];
+
+  // starshipClass = [];
+
+  // pictureStyle;
+
+  // unavaliableStarships;
+
+  // supportPass;
+
+  // nonFTL;
 const checkout = document.getElementById('buttonclick')
 checkout.addEventListener('click' , function(){
     window.location.href = "./checkout.html" 
