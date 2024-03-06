@@ -2,6 +2,7 @@
 // catchall variable of data that is not locked to a function
 let searchedData;
 let imageData;
+let classArray;
 
 
 //Function that pulls an array of starships based off of user input
@@ -32,7 +33,7 @@ async function searhApi(){
 
 }
 
-//function to generate card
+// function to generate card
 async function starshipCards(){
 
   //create a div wrap outside the for loop that all the cards will live in
@@ -120,4 +121,247 @@ async function starshipCards(){
 //runs the fuctions on search button click
 const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
+
+
+//local storage for hyperdrive class filter
+const hyperdriveClass = document.querySelector('#test5')
+hyperdriveClass.addEventListener("click", function(){
+  hclassValue = document.querySelector('#test5').value
+  localStorage.setItem('hclassValue',  hclassValue)
+})
+
+
+//local storage for unavaliable starship filter
+const unavaliableNo = document.querySelector('#unavaNo')
+unavaliableNo.addEventListener("click", function(){
+    localStorage.setItem('unavaliableShip',  "no")
+})
+const unavaliableYes = document.querySelector('#unavaYes')
+unavaliableYes.addEventListener("click", function(){
+    localStorage.setItem('unavaliableShip',  "yes")
+})
+
+// supportPass;
+const passengersNo = document.querySelector('#passengersNo')
+passengersNo.addEventListener("click", function(){
+    localStorage.setItem('suppotPassengers',  "no")
+})
+const passengersYes = document.querySelector('#passengersYes')
+passengersYes.addEventListener("click", function(){
+    localStorage.setItem('suppotPassengers',  "yes")
+})
+
+
+
+//dropdown multi-selct functionality and array
+document.addEventListener("DOMContentLoaded", function () {
+  const selects = document.querySelector("select");
+  M.FormSelect.init(selects, {});
+  const selectOption = document.querySelector("#option-select");
+    
+  selectOption.addEventListener("change", function () {
+    const instance = M.FormSelect.getInstance(selectOption);
+    const selectedValues = instance.getSelectedValues();
+    console.log(selectedValues);
+    classArray = selectedValues
+  });
+});
+
+
+                      // Price array section
+localStorage.clear();
+
+localStorage.setItem("$added", 'false')
+localStorage.setItem("$$added", 'false')
+localStorage.setItem("$$$added", 'false')
+localStorage.setItem("$$$$added", 'false')
+localStorage.setItem("$$$$$added", 'false')
+
+const priceRange1 = document.querySelector('#price1')
+priceRange1.addEventListener("click", function(){
+  
+  if(localStorage.getItem("$added") === 'true'){
+    priceArray = []
+  
+    let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+    
+    if(pulledArray === null){
+      pulledArray = priceArray
+    }else {
+      priceArray = pulledArray
+    }
+    
+    priceArray = priceArray.filter(e => e !== '$')
+    
+    window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+    localStorage.setItem("$added", 'false')
+  }else{
+    priceArray = []
+  
+  let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+  
+  if(pulledArray === null){
+    pulledArray = priceArray
+  }else {
+    priceArray = pulledArray
+  }
+  
+  priceArray.push('$')
+  
+  window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+    localStorage.setItem("$added", 'true')
+  
+  }
+  })
+
+const priceRange2 = document.querySelector('#price2')
+priceRange2.addEventListener("click", function(){
+
+if(localStorage.getItem("$$added") === 'true'){
+  priceArray = []
+  
+  let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+  
+  if(pulledArray === null){
+    pulledArray = priceArray
+  }else {
+    priceArray = pulledArray
+  }
+  
+  priceArray = priceArray.filter(e => e !== '$$')
+  
+  window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+  localStorage.setItem("$$added", 'false')
+}else{
+  priceArray = []
+
+let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+
+if(pulledArray === null){
+  pulledArray = priceArray
+}else {
+  priceArray = pulledArray
+}
+
+priceArray.push('$$')
+
+window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+  localStorage.setItem("$$added", 'true')
+
+}
+})
+
+const priceRange3 = document.querySelector('#price3')
+priceRange3.addEventListener("click", function(){
+
+if(localStorage.getItem("$$$added") === 'true'){
+  priceArray = []
+  
+  let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+  
+  if(pulledArray === null){
+    pulledArray = priceArray
+  }else {
+    priceArray = pulledArray
+  }
+  
+  priceArray = priceArray.filter(e => e !== '$$$')
+  
+  window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+  localStorage.setItem("$$$added", 'false')
+}else{
+  priceArray = []
+
+let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+
+if(pulledArray === null){
+  pulledArray = priceArray
+}else {
+  priceArray = pulledArray
+}
+
+priceArray.push('$$$')
+
+window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+  localStorage.setItem("$$$added", 'true')
+
+}
+})
+
+const priceRange4 = document.querySelector('#price4')
+priceRange4.addEventListener("click", function(){
+
+  if(localStorage.getItem("$$$$added") === 'true'){
+    priceArray = []
+  
+    let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+    
+    if(pulledArray === null){
+      pulledArray = priceArray
+    }else {
+      priceArray = pulledArray
+    }
+    
+    priceArray = priceArray.filter(e => e !== '$$$$')
+    
+    window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+    localStorage.setItem("$$$$added", 'false')
+  }else{
+    priceArray = []
+  
+  let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+  
+  if(pulledArray === null){
+    pulledArray = priceArray
+  }else {
+    priceArray = pulledArray
+  }
+  
+  priceArray.push('$$$$')
+  
+  window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+    localStorage.setItem("$$$$added", 'true')
+  
+  }
+  })
+
+const priceRange5 = document.querySelector('#price5')
+priceRange5.addEventListener("click", function(){
+
+  if(localStorage.getItem("$$$$$added") === 'true'){
+    priceArray = []
+  
+    let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+    
+    if(pulledArray === null){
+      pulledArray = priceArray
+    }else {
+      priceArray = pulledArray
+    }
+    
+    priceArray = priceArray.filter(e => e !== '$$$$$')
+    
+    window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+    localStorage.setItem("$$$$$added", 'false')
+  }else{
+    priceArray = []
+  
+  let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
+  
+  if(pulledArray === null){
+    pulledArray = priceArray
+  }else {
+    priceArray = pulledArray
+  }
+  
+  priceArray.push('$$$$$')
+  
+  window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+    localStorage.setItem("$$$$$added", 'true')
+  
+  }
+})
+                  // Price array section end
+
+
 

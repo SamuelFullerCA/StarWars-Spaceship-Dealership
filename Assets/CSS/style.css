@@ -94,11 +94,14 @@ main{
         .imgCss{
             border-radius: 25px;
         }
+
     }
 }
 
+
 /* Container for all cards */
 #divWrap {
+    width: 95vw;
     display: flex;
     flex-wrap: wrap;
     margin: 2%;

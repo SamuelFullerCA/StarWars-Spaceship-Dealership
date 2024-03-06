@@ -62,11 +62,10 @@ const instances = M.Dropdown.init(elems,{
 document.addEventListener('DOMContentLoaded', function() {
     let manufact = document.querySelectorAll('select');
    M.FormSelect.init(manufact, {
-    data:{
-        "Death Star": null,
-   }
+    data:{}
   });
 });
+
 
 document.addEventListener('DOMContentLoaded', function() {
     let elems = document.querySelectorAll('.modal');
