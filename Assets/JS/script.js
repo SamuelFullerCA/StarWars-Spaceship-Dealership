@@ -11,7 +11,6 @@ async function searhApi(){
   formValue = document.querySelector('#autocomplete-input').value
 
 
-
   //assigns the api with the search parameter of the users input to a variable
   userSearch = `https://swapi.dev/api/starships/?search=${formValue}`
 
@@ -52,18 +51,18 @@ async function starshipCards(){
 
  // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
 // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
-    test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedData.results[i].model}`
-    const response = await fetch(test2)
-    let fetchedData = await response.json()
-    console.log(fetchedData)
-    imageData = fetchedData
+    // test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedData.results[i].model}`
+    // const response = await fetch(test2)
+    // let fetchedData = await response.json()
+    // console.log(fetchedData)
+    // imageData = fetchedData
 
  
     //generates the image 
     let starshipImg =  document.createElement('IMG')
-    starshipImg.setAttribute('src', `${imageData.items[i].link}`)
+    // starshipImg.setAttribute('src', `${imageData.items[i].link}`)
     // placeholder for max image search
-    // starshipImg.src = './Assets/Images/Placeholder.jpg'
+    starshipImg.src = './Assets/Images/Placeholder.jpg'
     starshipImg.setAttribute('width', '275')
     starshipImg.setAttribute('height', '150')
     starshipImg.setAttribute('class', 'imgCss')
@@ -102,6 +101,7 @@ async function starshipCards(){
     let addCart = document.createElement('button')
     addCart.setAttribute('class', `waves-effect waves-light btn addCart`)
     addCart.setAttribute('id', `${searchedData.results[i].name}`)
+    addCart.setAttribute('onclick', "M.toast({html: 'Added to cart!', classes: 'rounded'})")
     addCart.textContent = `Purchase`
 
     //appends the card to the wrap
