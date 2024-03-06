@@ -204,32 +204,7 @@ const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
 
 
-
-
-const hyperdriveClass = document.querySelector('#test5')
-hyperdriveClass.addEventListener("click", function(){
-
-  hclassValue = document.querySelector('#test5').value
-  localStorage.setItem('hclassValue',  hclassValue)
-
+const checkout = document.getElementById('buttonclick')
+checkout.addEventListener('click' , function(){
+    window.location.href = "./checkout.html" 
 })
-
-
-// hyperdriveClass.addEventListener("mouseup", () => {
-
-//   hclassValue = document.querySelector('#test5').value
-//     localStorage.setItem('hclassValue',  hclassValue)
-
-// });
-
-  // priceRange = [];
-
-  // starshipClass = [];
-
-  // pictureStyle;
-
-  // unavaliableStarships;
-
-  // supportPass;
-
-  // nonFTL;
