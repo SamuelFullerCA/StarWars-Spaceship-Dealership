@@ -47,7 +47,7 @@ async function starshipCards(){
     //generates the card
     let starshipCard = document.createElement('section')
     //col s3 class allows it to accupy 3/12 of the row, so 4 cards per row
-    starshipCard.setAttribute('class', ` center-align starship ship${i}`)
+    starshipCard.setAttribute('class', ` card center-align starship ship${i}`)
 
  // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
 // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
@@ -70,6 +70,7 @@ async function starshipCards(){
   
     //generates the ship name
     let starshipName = document.createElement('h3')
+    starshipName.setAttribute('class', 'activator')
     starshipName.textContent = `${searchedData.results[i].name}`
 
     //generates the word cost I put this here so the word "cost" sits about the actuall number
@@ -104,13 +105,45 @@ async function starshipCards(){
     addCart.setAttribute('onclick', "M.toast({html: 'Added to cart!', classes: 'rounded'})")
     addCart.textContent = `Purchase`
 
+
+    let revealActivator = document.createElement('i');
+    revealActivator.setAttribute('class', 'material-icons right');
+
+    let revealDiv = document.createElement('div');
+    revealDiv.setAttribute('class', 'card-reveal');
+
+    let revealSpan = document.createElement('span');
+    revealSpan.setAttribute('class', 'card-title');
+    revealSpan.textContent = 'TITLE'
+
+    let revealClose = document.createElement('i');
+    revealClose.setAttribute('class', 'material-icons right');
+    revealClose.textContent = 'close'
+
+    starshipName.append(revealActivator)
+    revealSpan.append(revealClose)
+
+
+    revealDiv.append(revealSpan)
+
+
+
+
+
+
+
+
+
+
+
+
     //appends the card to the wrap
     divWrap.append(starshipCard)
     
     //appends the mode, mglt, and hdrive to the body
     cardBody.append(starshipModel, shipMglt, shipHdrive)
     //apends the name, image, cost text, cost, body, and purchse button to the card
-    document.querySelector(`.ship${i}`).append(starshipName, starshipImg, costText, starshipCost, cardBody, addCart )
+    document.querySelector(`.ship${i}`).append(starshipName, starshipImg, costText, starshipCost, cardBody, addCart, revealDiv)
 
   }
 
@@ -121,3 +154,33 @@ async function starshipCards(){
 const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
 
+
+
+
+const hyperdriveClass = document.querySelector('#test5')
+hyperdriveClass.addEventListener("click", function(){
+
+  hclassValue = document.querySelector('#test5').value
+  localStorage.setItem('hclassValue',  hclassValue)
+
+})
+
+
+// hyperdriveClass.addEventListener("mouseup", () => {
+
+//   hclassValue = document.querySelector('#test5').value
+//     localStorage.setItem('hclassValue',  hclassValue)
+
+// });
+
+  // priceRange = [];
+
+  // starshipClass = [];
+
+  // pictureStyle;
+
+  // unavaliableStarships;
+
+  // supportPass;
+
+  // nonFTL;
