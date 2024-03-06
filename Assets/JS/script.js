@@ -121,3 +121,7 @@ async function starshipCards(){
 const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
 
+const checkout = document.getElementById('buttonclick')
+checkout.addEventListener('click' , function(){
+    window.location.href = "./checkout.html" 
+})
