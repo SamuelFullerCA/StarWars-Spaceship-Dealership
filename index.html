@@ -7,10 +7,15 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="./Assets/CSS/materialize.min.css"  media="screen,projection"/>
+
     <link type="text/css" rel="stylesheet" href="./Assets/CSS/style.css"/>
 
+    <link type="text/css" rel="stylesheet" href="./Assets/CSS/nouislider.css"/>
+
+   
+
     <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
-    <title>Starwars Dealership</title>
+    <title>Document</title>
 </head>
 
 
@@ -43,23 +48,170 @@
                 <div id="searchBox" class="card">
                     <div class="card-image waves-effect waves-block waves-light"></div>
                 <div class="card-content" id="searchBox">
-                  <span class="card-title activator">Search for starships<i class="material-icons right">more_vert</i></span>
+                  <span class="card-title ">Search for starships</span>
                   <div class="row">
                     <div class="col s12">
                       <div class="row">
                         <div class="input-field col s12">
-                          <i class="material-icons prefix">textsms</i>
+                          <i class="material-icons prefix">search</i>
                           <input type="text" id="autocomplete-input" class="autocomplete">
                           <label id="labelcss" for="autocomplete-input">Starship</label>
                           <button id="searchBtn"  class="waves-effect waves-light btn">search</button>
+
+                          <!-- modal trigger -->
+                          <a class="btn-floating halfway-fab waves-effect waves-light grey darken-2 modal-trigger " href="#advanceFilters"> <i class="material-icons">filter_list</i></a>
+
+                          <!-- Modal Structure -->
+                          <div id="advanceFilters" class="modal grey darken-4">
+                            <div class="modal-content">
+                              <h4>Advanced Filters</h4>
+                         
+                        <!-- filters inside modal       -->
+                        <div class="row">
+
+                                <!-- hyperdrive slider -->
+                                  <div class="col s6">
+                                    <p></p>Hyperdrive Class:</p>
+                                    <p class="range-field">
+                                      <input type="range" id="test5" min="0" max="4" />
+                                    </p>
+                                  </div>
+
+                                  <!-- class selector -->
+                                  <div class="input-field col s6">
+                                    <select  multiple>
+                                      <option value="" disabled selected>Select Multiple</option>
+                                      <option value="1">Corvette</option>
+                                      <option value="2">Cruiser</option>
+                                      <option value="3">Capital ship</option>
+                                      <option value="5">Dreadnought</option>
+                                      <option value="6">Destroyer</option>
+                                      <option value="7">Freighter</option>
+                                      <option value="8">Starfighter</option>
+                                      <option value="9">Transport</option>
+                                      <option value="10">Yacht</option>
+                                      <option value="11">Other</option>
+                                    </select>
+                                    <label class="white-text" id="classList">Starship Class:</label>
+                                  </div>
+
+                                  <!-- Passenger question -->
+                                  <form action="#" class="col s6">
+                                    <p>Show Starships That Can't Support Passengers:</p>
+                                    <p>
+                                      <label>
+                                        <input name="group1" type="radio" checked />
+                                        <span>Yes</span>
+                                      </label>
+                                    </p>
+                                    <p>
+                                      <label>
+                                        <input name="group1" type="radio" />
+                                        <span>No </span>
+                                      </label>
+                                    </p>
+                                  </form>
+                                  
+                                  <!-- Unavailiable starship question -->
+                                  <form action="#" class="col s6">
+                                    <br>
+                                    <p>Show Unavailable Starships?:</p>
+                                    <p>
+                                      <label>
+                                        <input name="group1" type="radio" checked />
+                                        <span>Yes</span>
+                                      </label>
+                                    </p>
+                                    <p>
+                                      <label>
+                                        <input name="group1" type="radio" />
+                                        <span>No </span>
+                                      </label>
+                                    </p>
+                                  </form>
+
+                                  <!-- Prince Range -->
+                                  <div class="col s6">
+                                    <br>
+                                     Specific Price Range:
+                                    <p>
+                                      <label>
+                                        <input type="checkbox" />
+                                       <span>0-100,000 Credits</span>
+                                      </label>
+                                   </p>
+                                   <p>
+                                      <label>
+                                       <input type="checkbox" />
+                                        <span>100,000 - 1,000,000 Credits</span>
+                                     </label>
+                                    </p>
+                                    <p>
+                                      <label>
+                                       <input type="checkbox" />
+                                        <span>1,000,000 - 10,000,000 Credits</span>
+                                      </label>
+                                    </p>
+                                    <p>
+                                      <label>
+                                        <input type="checkbox" />
+                                        <span>10,000,000 - 100,000,000 Credits</span>
+                                      </label>
+                                    </p>
+                                    <p>
+                                      <label>
+                                        <input type="checkbox" />
+                                        <span>100,000,000+ Credits</span>
+                                      </label>
+                                    </p>
+                                  </div>
+
+                                  <!-- Picture preference -->
+                                  <div class="input-field col s6">
+                                    <br>
+                                    <select class="icons">
+                                      <option value="" disabled selected>Picture Preference</option>
+                                      <option value="" data-icon="./Assets/Images/Placeholder.jpg">example 1</option>
+                                      <option value="" data-icon="./Assets/Images/Placeholder.jpg">example 2</option>
+                                    </select>
+                                    <br>
+                                    <label class="white-text">Picture Style</label>
+                                  </div>
+
+                                  <!-- possible addition for land vehicles -->
+                                  <div class="switch col s6" >
+                                    <br>
+                                    Non-FTL vehicles:
+                                    <br>
+                                    <label>
+                                      Off
+                                      <input type="checkbox">
+                                      <span class="lever"></span>
+                                      On
+                                    </label>
+                                  </div>
+
+
+                        </div>
+                            <!-- modal footer -->
+                            </div>
+                            <div class="modal-footer grey darken-4">
+                              <a href="#!" class="modal-close waves-effect waves-green green darken-4 btn-flat">Apply</a>
+
+
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="card-reveal">
-                  <span class="card-title grey-text text-darken-4">Advanced Search<i class="material-icons right">close</i></span>
-                  <p>advanced search goes here</p>
+                <!-- card reveal if we want to change back it didnt have a lot of space -->
+                <!-- <div class="card-reveal grey darken-4">
+                  <span  class="card-title ">Advanced Search<i class="material-icons right">close</i></span>
+                  <p>Hyperdrive raiting (lower is faster):</p> -->
+                
+                  
                 </div>
               </div>
             </aside>
@@ -70,7 +222,7 @@
         </div>
 
         <!-- section wrap for spaceship cards -->
-    <section id="displayedCards" >
+    <section id="displayedCards" class="row">
 
         </section>
     </main >
@@ -81,7 +233,11 @@
 <script type="text/javascript" src="./Assets/JS/materialize.min.js"></script>
 <!-- file for js functionality outside materalize -->
 <script type="text/javascript" src="./Assets/JS/script.js"></script>
+
+<script type="text/javascript" src="./Assets/JS/nouislider.js"></script>
+
 <!-- additional js file to handle all materialize js functionality so base js page doesnt get cluttered -->
 <script type="text/javascript" src="./Assets/JS/materalize.js"></script>
+
 
 </html>

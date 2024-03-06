@@ -52,7 +52,25 @@ const instances = M.Dropdown.init(elems,{
     coverTrigger: false
 });
 
+// //carousel wrap
+// const wheel = document.querySelector('.carousel');
+// M.Carousel.init(wheel, {})
 
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    let manufact = document.querySelectorAll('select');
+   M.FormSelect.init(manufact, {
+    data:{
+        "Death Star": null,
+   }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems,);
+  });
+  
+ 
