@@ -33,7 +33,7 @@ main{
 
 
     /* styles the while searchbox card */
-    #searchBox {
+    #searchBox{
         background-color: #212121;
         color: aliceblue;
         border-radius: 25px;
@@ -45,6 +45,7 @@ main{
         border: 3px solid rgb(255, 255, 255);
         border-radius: 15px;
     }
+
 
 
 
@@ -109,6 +110,22 @@ main{
     margin-top: 50px;
     margin-left: 50px;
 }
+#advanceFilters{
+    border-radius: 15px;
+    /* max-height: 60vh; */
+}
+
+/* modal filter apply button */
+.modal-close{
+    color:aliceblue;
+    border-radius: 15px;
+}
+
+/* starhip class text color in filter modal */
+#classList{
+    color: aliceblue;
+}
+
 
 /* adds the Aurebesh font */
 @font-face {
@@ -146,3 +163,28 @@ main{
         width: 100%;
     }
   }
+
+
+
+
+
+
+
+/* styling for range inside filter modal */
+input[type=range]::-webkit-slider-thumb {
+  background-color: skyblue;
+}
+input[type=range]::-moz-range-thumb {
+  background-color: skyblue;
+}
+input[type=range]::-ms-thumb {
+  background-color: skyblue;
+}
+/* For the globe and the text inside */
+input[type=range] + .thumb {
+  background-color: blue;
+}
+input[type=range] + .thumb.active .value {
+  color: #fff;
+}
+
