@@ -30,7 +30,7 @@ body{
 } */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
@@ -40,6 +40,7 @@ body {
     max-width: 600px;
     margin: 20px auto;
     background-color: #fff;
+    color:  aliceblue;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -50,6 +51,7 @@ body {
 .form-group label {
     display: block;
     font-weight: bold;
+    color:  aliceblue;
 }
 .form-group input {
     width: 100%;
@@ -57,10 +59,24 @@ body {
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    color:  aliceblue;
 }
 .form-group input[type="submit"] {
-    background-color: #4caf50;
+    background-color: rgb(238, 219, 0);
     color: #fff;
     cursor: pointer;
+    color:  aliceblue;
 }
+
+#submitbutton {
+    font-family: Aurebesh;
+    font-weight: bold;
+    color: black;
+}
+
+@font-face {
+    font-family: Aurebesh;
+    src: url(../Aurebesh.ttf);
+}
+
 
