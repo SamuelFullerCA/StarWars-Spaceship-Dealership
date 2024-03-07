@@ -41,15 +41,30 @@ main{
 
      /*styles the banner card */
      #banner{
-        height: 25vh;
+        height: 32vh;
         margin-top: 56px;
         /*border: 3px solid rgb(255, 255, 255); */
         border-radius: 25px;
-        background-color: #212121
+        background-color: black;
     }
 
+    
 
+    #featuredDeathstar {
+        position: relative;
+        top: 6px;
+        right: 5px;
+        width: 101%;
+        height: 95%;
+        padding-right: 5px;
+        border-radius: 20px;
+        border: 5px solid white;
+    }
 
+    #bannerHeader {
+        color: white;
+        position: absolute;
+    }
 
     /* styles the starship card and everything inside */
     .starship{
