@@ -126,6 +126,7 @@ async function starshipCards(){
     //generates the ship name
     let starshipName = document.createElement('h3')
     starshipName.setAttribute('class', 'activator')
+
     starshipName.textContent = `${searchedDataSpecific.result[i].properties.name}`
 
     //generates the word cost I put this here so the word "cost" sits about the actuall number
@@ -179,6 +180,7 @@ async function starshipCards(){
 
     let revealName = document.createElement('p');
     revealName.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
+
     revealName.textContent = `Name: ${searchedDataSpecific.result[i].properties.name}`;
 
     let revealModel = document.createElement('p');
@@ -225,6 +227,7 @@ async function starshipCards(){
     revealClass.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
     revealClass.textContent = `Starship Class: ${searchedDataSpecific.result[i].properties.starship_class}`;
 
+
     let revealClose = document.createElement('i');
     revealClose.setAttribute('class', 'material-icons right');
     revealClose.textContent = 'close'
@@ -261,6 +264,7 @@ async function starshipCards(){
 //runs the fuctions on search button click
 const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
+
 
 const searchFiltered = document.querySelector("#filteredSearchBtn")
 searchFiltered.addEventListener('click', searhApiFiltered);
@@ -506,6 +510,7 @@ priceRange5.addEventListener("click", function(){
   }
 })
 // Price array section end
+
 
 
 
