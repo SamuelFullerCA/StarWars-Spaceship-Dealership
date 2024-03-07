@@ -9,7 +9,6 @@ let searchedDataSpecific;
 //Function that pulls an array of starships based off of user input
 async function searhApi(){
 
-  searchedData = []
   //gets the value the user inputs in the search bar
   formValue = document.querySelector('#autocomplete-input').value
 
@@ -18,7 +17,7 @@ async function searhApi(){
   
   //change 1 to 4 to get att 36 results
   
-  userSearch = `https://swapi.dev/api/starships/?search=${formValue}`
+  userSearch = `https://swapi.tech/api/starships/?name=${formValue}`
   
   
   //fetches the data and stores it to the catchall variable
@@ -28,7 +27,7 @@ async function searhApi(){
 
   searchedDataSpecific = fetchedData2
   
-  console.log(searchedData)
+  console.log(searchedDataSpecific)
   //deletes the cards generated from previous search
   const previousCards = document.querySelector('#divWrap')
   if (previousCards !== null){
@@ -44,7 +43,7 @@ async function searhApiFiltered(){
 
   
   //gets the value the user inputs in the search bar
-  formValue = document.querySelector('#autocomplete-input').value
+  // formValue = document.querySelector('#autocomplete-input').value
 
 
   //assigns the api with the search parameter of the users input to a variable
@@ -76,7 +75,7 @@ async function searhApiFiltered(){
   // fetchedData2
   // }
 
-  console.log(searchedData)
+  
   //deletes the cards generated from previous search
   const previousCards = document.querySelector('#divWrap')
   if (previousCards !== null){
@@ -98,7 +97,7 @@ async function starshipCards(){
   document.querySelector('#displayedCards').append(divWrap)
 
 //for loop cenerating cards
-  for(i = 0; i < searchedDataSpecific.results.length; i++){
+  for(i = 0; i < searchedDataSpecific.result.length; i++){
 
     //generates the card
     let starshipCard = document.createElement('section')
@@ -127,7 +126,7 @@ async function starshipCards(){
     //generates the ship name
     let starshipName = document.createElement('h3')
     starshipName.setAttribute('class', 'activator')
-    starshipName.textContent = `${searchedDataSpecific.results[i].name}`
+    starshipName.textContent = `${searchedDataSpecific.result[i].properties.name}`
 
     //generates the word cost I put this here so the word "cost" sits about the actuall number
     //(there is probably a better way to do this)
@@ -136,10 +135,10 @@ async function starshipCards(){
 
     //generates the cost in credits
     let starshipCost = document.createElement('h4')
-    if(searchedDataSpecific.results[i].cost_in_credits === 'unknown'){
+    if(searchedDataSpecific.result[i].properties.cost_in_credits === 'unknown'){
       starshipCost.textContent = 'Unavaliable'
     }else {
-    starshipCost.textContent = `${searchedDataSpecific.results[i].cost_in_credits} Credits`
+    starshipCost.textContent = `${searchedDataSpecific.result[i].properties.cost_in_credits} Credits`
     }
 
     //seperated card body to allow customization difference between top half and lower half of card
@@ -148,20 +147,20 @@ async function starshipCards(){
 
     //generates the model text
     let starshipModel = document.createElement('p')
-    starshipModel.textContent = `Model: ${searchedDataSpecific.results[i].model}`
+    starshipModel.textContent = `Model: ${searchedDataSpecific.result[i].properties.model}`
 
     // generates the MGLT text
     let shipMglt = document.createElement('p')
-    shipMglt.textContent = `MGLT: ${searchedDataSpecific.results[i].MGLT} `
+    shipMglt.textContent = `MGLT: ${searchedDataSpecific.result[i].properties.MGLT} `
 
     // generates the hyperdrive rating text
     let shipHdrive = document.createElement('p')
-    shipHdrive.textContent = `Hyperdrive Rating: ${searchedDataSpecific.results[i].hyperdrive_rating} `
+    shipHdrive.textContent = `Hyperdrive Rating: ${searchedDataSpecific.result[i].properties.hyperdrive_rating} `
 
     //generates the purchase button with materalize features
     let addCart = document.createElement('button')
     addCart.setAttribute('class', `waves-effect waves-light btn addCart`)
-    addCart.setAttribute('id', `${searchedDataSpecific.results[i].name}`)
+    addCart.setAttribute('id', `${searchedDataSpecific.result[i].properties.name}`)
     addCart.setAttribute('onclick', "M.toast({html: 'Added to cart!', classes: 'rounded'})")
     addCart.textContent = `Purchase`
 
@@ -180,51 +179,51 @@ async function starshipCards(){
 
     let revealName = document.createElement('p');
     revealName.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealName.textContent = `Name: ${searchedDataSpecific.results[i].name}`;
+    revealName.textContent = `Name: ${searchedDataSpecific.result[i].properties.name}`;
 
     let revealModel = document.createElement('p');
     revealModel.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealModel.textContent = `Model: ${searchedDataSpecific.results[i].model}`;
+    revealModel.textContent = `Model: ${searchedDataSpecific.result[i].properties.model}`;
 
     let revealManufacturer = document.createElement('p');
     revealManufacturer.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealManufacturer.textContent = `Manufacturer: ${searchedDataSpecific.results[i].manufacturer}`;
+    revealManufacturer.textContent = `Manufacturer: ${searchedDataSpecific.result[i].properties.manufacturer}`;
 
     let revealCost = document.createElement('p');
     revealCost.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealCost.textContent = `Cost: ${searchedDataSpecific.results[i].cost_in_credits}`;
+    revealCost.textContent = `Cost: ${searchedDataSpecific.result[i].properties.cost_in_credits}`;
 
     let revealLength = document.createElement('p');
     revealLength.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealLength.textContent = `Length: ${searchedDataSpecific.results[i].length}`;
+    revealLength.textContent = `Length: ${searchedDataSpecific.result[i].properties.length}`;
 
     let revealSpeed = document.createElement('p');
     revealSpeed.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealSpeed.textContent = `Atmospheric Speed: ${searchedDataSpecific.results[i].max_atmosphering_speed}`;
+    revealSpeed.textContent = `Atmospheric Speed: ${searchedDataSpecific.result[i].properties.max_atmosphering_speed}`;
 
     let revealCrew = document.createElement('p');
     revealCrew.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealCrew.textContent = `Crew Size: ${searchedDataSpecific.results[i].crew}`;
+    revealCrew.textContent = `Crew Size: ${searchedDataSpecific.result[i].properties.crew}`;
 
     let revealPassengers = document.createElement('p');
     revealPassengers.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealPassengers.textContent = `Passengers: ${searchedDataSpecific.results[i].passengers}`;
+    revealPassengers.textContent = `Passengers: ${searchedDataSpecific.result[i].properties.passengers}`;
 
     let revealCargo = document.createElement('p');
     revealCargo.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealCargo.textContent = `Cargo Capacity: ${searchedDataSpecific.results[i].cargo_capacity}`;
+    revealCargo.textContent = `Cargo Capacity: ${searchedDataSpecific.result[i].properties.cargo_capacity}`;
 
     let revealHyper = document.createElement('p');
     revealHyper.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealHyper.textContent = `Hyperdrive Rating: ${searchedDataSpecific.results[i].hyperdrive_rating}`;
+    revealHyper.textContent = `Hyperdrive Rating: ${searchedDataSpecific.result[i].properties.hyperdrive_rating}`;
 
     let revealMGLT = document.createElement('p');
     revealMGLT.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealMGLT.textContent = `MGLT: ${searchedDataSpecific.results[i].MGLT}`;
+    revealMGLT.textContent = `MGLT: ${searchedDataSpecific.result[i].properties.MGLT}`;
 
     let revealClass = document.createElement('p');
     revealClass.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
-    revealClass.textContent = `Starship Class: ${searchedDataSpecific.results[i].starship_class}`;
+    revealClass.textContent = `Starship Class: ${searchedDataSpecific.result[i].properties.starship_class}`;
 
     let revealClose = document.createElement('i');
     revealClose.setAttribute('class', 'material-icons right');
@@ -573,42 +572,55 @@ async function filteredCards(){
     let costFilterVal = searchedData[i].cost_in_credits
 
     let numberVal = parseInt(costFilterVal)
+    console.log(numberVal)
 
     if(filterArray.length >= 1){
-      if(filterArray.includes('range1' || 'range2' || 'range3' || 'range4' || 'range5')){
-        if(localStorage.getItem('$added') === false && numberVal > 100000 ){
-          if (filterArray.includes("range2" || 'range3' || 'range4' || 'range5')){
-            if(numberVal > 1000000){
-              if(filterArray.includes("range3" || 'range4' || 'range5')){
+      console.log('passed 0')
+      if(filterArray.includes('range1') || filterArray.includes('range2') || filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
+        if(numberVal > 100001){
+          if(filterArray.includes('range2') || filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
+            if(numberVal > 1000001){
+              if(filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
                 if(numberVal > 10000000){
-                  if(filterArray.includes("range4" || 'range5')){
+                  if(filterArray.includes('range4') || filterArray.includes('range5')){
                     if(numberVal > 100000000){
                       if(filterArray.includes("range5")){
-                        if(numberVal > 1000000000000000 ){
+                        if(numberVal > 1000000000000000){
+                        }else if(localStorage.getItem('$$$$added') === 'false' ){
+                          continue
                         }
-                      }
-                      else{
+                      }else{
                         continue
                       }
+                    }else if(localStorage.getItem('$$$$added') === 'false' ){
+                      continue
                     }
-                    //fail at line 527
-                  }
-                  else{
+                  }else{
                     continue
                   }
+                }else if(localStorage.getItem('$$$added') === 'false' ){
+                  continue
                 }
-                //fail at line 525
               }else{
                 continue
               }
+            }else if(localStorage.getItem('$$added') === 'false' ){
+              continue
             }
-            //fail at line 523
           }else{
             continue
           }
+        }else if(localStorage.getItem('$added') === 'false' ){
+          continue
         }
       }
-    }
+     } 
+    
+
+    
+  
+
+    
 
 
 
@@ -787,7 +799,6 @@ pageload()
 async function pageload(){
 
 if(JSON.parse(localStorage.getItem(`swapitech`)) === null || JSON.parse(localStorage.getItem(`swapitech`)) === undefined || JSON.parse(localStorage.getItem(`swapitech`)) === ""){
-
 for(let i = 2; i <= 40; i++){
   // userSearch = `https://swapi.dev/api/starships/?search=${formValue}`
   userSearch = `https://swapi.tech/api/starships/${i}`
