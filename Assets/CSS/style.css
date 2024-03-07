@@ -95,15 +95,19 @@ main{
         .imgCss{
             border-radius: 25px;
         }
+
     }
 }
 
+
 /* Container for all cards */
 #divWrap {
+    width: 95vw;
     display: flex;
     flex-wrap: wrap;
     margin: 2%;
     margin-top: 0px;
+    width: 95vw;
 }
 
 /* positioning for the search box */
@@ -127,7 +131,6 @@ main{
     color: aliceblue;
 }
 
-
 /* adds the Aurebesh font */
 @font-face {
     font-family: Aurebesh;
@@ -143,6 +146,7 @@ main{
     #divWrap {
         margin: 5%;
         margin-top: 0px;
+        
     }
 
     #searchBoxcss {
@@ -188,4 +192,5 @@ input[type=range] + .thumb {
 input[type=range] + .thumb.active .value {
   color: #fff;
 }
+
 
