@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="./Assets/CSS/materialize.min.css"  media="screen,projection"/>
 
@@ -15,11 +16,16 @@
    
 
     <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
-    <title>Document</title>
+    <title>Starwars Dealership</title>
 </head>
 
 
 <body>
+
+  <video autoplay muted loop id="starScrolling">
+    <source src="./Assets/Images/particles_-_323 (Original).mp4" type="video/mp4">
+  </video>
+
     <header>
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content">
@@ -54,7 +60,7 @@
                       <div class="row">
                         <div class="input-field col s12">
                           <i class="material-icons prefix">search</i>
-                          <input type="text" id="autocomplete-input" class="autocomplete">
+                          <input type="text" id="autocomplete-input" class="autocomplete white-text">
                           <label id="labelcss" for="autocomplete-input">Starship</label>
                           <button id="searchBtn"  class="waves-effect waves-light btn">search</button>
 
@@ -190,8 +196,6 @@
                                       On
                                     </label>
                                   </div>
-
-
                         </div>
                             <!-- modal footer -->
                             </div>
@@ -207,6 +211,7 @@
                   </div>
                 </div>
 
+
                 <!-- card reveal if we want to change back it didnt have a lot of space -->
                 <!-- <div class="card-reveal grey darken-4">
                   <span  class="card-title ">Advanced Search<i class="material-icons right">close</i></span>
@@ -216,11 +221,24 @@
                 </div>
               </div>
             </aside>
+
               <!-- banner -->
-            <!-- <figure class="col s8" id="banner">
-                hero banenr
-            </figure> -->
+            <section class="col s8" id="banner">
+                <div class="text-box">
+                  <h2 id="bannerHeader">Featured Starship</h2>
+                  <h4 id="bannerShip"> The Death Star </h4>
+                  <p id="bannerDetails">  
+                    Price: <br>
+                    MGLT: <br>
+                    Hyperdrive: <br>
+
+
+                  </p>
+                 
+                </div>
+            </section> 
         </div>
+                
 
         <!-- section wrap for spaceship cards -->
     <section id="displayedCards" class="row">

@@ -1,10 +1,19 @@
 
 /* backround image for page */
-body{
+/* body{
     background-image: url(../Images/backgroundStars.jpg);
-}
+} */
 
-/* all style elements inside the header section are nested in here */
+
+#starScrolling {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  /* all style elements inside the header section are nested in here */
 header{
     font-family: Aurebesh;
 
@@ -19,7 +28,12 @@ header{
       /* styles the nav bar text */
     .pageName{
         margin-left: 25px;
+        font-size: 30px;
         font-family: Aurebesh;
+    }
+
+    .dropdown-trigger {
+        font-size: 30px;
     }
 }
 
@@ -37,6 +51,7 @@ main{
         background-color: #212121;
         color: aliceblue;
         border-radius: 25px;
+
     
     }
 
@@ -45,10 +60,32 @@ main{
         height: 35vh;
         border: 3px solid rgb(255, 255, 255);
         border-radius: 15px;
+
     }
 
+    /*styles the banner card */
+    #banner{
+        height: 300px;
+        width: 1000px;
+        margin-top: 56px;
+        border: 5px solid rgb(255, 255, 255);
+        border-radius: 25px;
+        background-image: url(../Images/featuredDeathstar.jpg);
+        background-size: 100% 100%;
+    }
+    
+    #bannerHeader {
+        margin-top: 0px;
+    }
+    
+    .text-box{
+        position: relative;
+        font-family: Starjedi;
+        color: white;
+        margin-left: 10px;
+    }
 
-
+    
 
     /* styles the starship card and everything inside */
     .starship{
@@ -137,6 +174,11 @@ main{
     src: url(../Aurebesh.ttf);
 }
 
+@font-face {
+    font-family: Starjedi;
+    src: url(../Starjedi.ttf);
+}
+
 /* Tablets 992px*/
 @media screen and (max-width: 1139px) {
     .starship{
@@ -154,6 +196,12 @@ main{
         margin: 4%;
         margin-top: 50px;
         margin-bottom: 0px;
+    }
+
+    #banner {
+        margin: 4%;
+        width: 93%;
+
     }
   }
   
