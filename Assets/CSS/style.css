@@ -1,10 +1,19 @@
 
 /* backround image for page */
-body{
+/* body{
     background-image: url(../Images/backgroundStars.jpg);
-}
+} */
 
-/* all style elements inside the header section are nested in here */
+
+#starScrolling {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  /* all style elements inside the header section are nested in here */
 header{
     font-family: Aurebesh;
 
@@ -113,11 +122,14 @@ main{
         .imgCss{
             border-radius: 25px;
         }
+
     }
 }
 
+
 /* Container for all cards */
 #divWrap {
+    width: 95vw;
     display: flex;
     flex-wrap: wrap;
     margin: 2%;
@@ -218,4 +230,5 @@ input[type=range] + .thumb {
 input[type=range] + .thumb.active .value {
   color: #fff;
 }
+
 
