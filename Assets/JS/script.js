@@ -103,7 +103,8 @@ async function starshipCards(){
     addCart.setAttribute('id', `${searchedData.results[i].name}`)
     addCart.setAttribute('onclick', "M.toast({html: 'Added to cart!', classes: 'rounded'})")
     addCart.textContent = `Purchase`
-
+    document.querySelector('displayCards').append(starshipName,starshipImg, costText)
+ 
     //appends the card to the wrap
     divWrap.append(starshipCard)
     
@@ -125,3 +126,5 @@ const checkout = document.getElementById('buttonclick')
 checkout.addEventListener('click' , function(){
     window.location.href = "./checkout.html" 
 })
+
+
