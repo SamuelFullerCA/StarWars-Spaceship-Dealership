@@ -42,7 +42,7 @@ async function searhApi(){
 
 async function searhApiFiltered(){
 
-  searchedData = []
+  
   //gets the value the user inputs in the search bar
   formValue = document.querySelector('#autocomplete-input').value
 
@@ -50,20 +50,32 @@ async function searhApiFiltered(){
   //assigns the api with the search parameter of the users input to a variable
   
   //change 1 to 4 to get att 36 results
-  for(let i = 1; i <= 4; i++){
-  // userSearch = `https://swapi.dev/api/starships/?search=${formValue}`
-  userSearch = `https://swapi.dev/api/starships/?search=${formValue}&page=${i}`
+  // for(let i = 2; i <= 40; i++){
+  // // userSearch = `https://swapi.dev/api/starships/?search=${formValue}`
+  // userSearch = `https://swapi.tech/api/starships/${i}`
   
-  //fetches the data and stores it to the catchall variable
-  const response2 = await fetch(userSearch)
-  let fetchedData2 = await response2.json()
-  console.log(fetchedData2)
+  // //fetches the data and stores it to the catchall variable
+  // const response2 = await fetch(userSearch)
+  
+  // let fetchedData2 = await response2.json()
+  // console.log(fetchedData2)
 
-  let arrayLength = fetchedData2.results.length
+  // // let arrayLength = fetchedData2.results.length
 
-  for(let j = 0; j < arrayLength; j++)
-  searchedData.push(fetchedData2.results[j])
-  }
+  // if (fetchedData2.message ==='Not found'){
+  //   continue
+  // }
+
+  // searchedData.push(fetchedData2.result.properties)
+
+  // localStorage.setItem('swapitech', JSON.stringify(searchedData))
+
+  // searchedData = 
+  
+
+  // fetchedData2
+  // }
+
   console.log(searchedData)
   //deletes the cards generated from previous search
   const previousCards = document.querySelector('#divWrap')
@@ -564,7 +576,7 @@ async function filteredCards(){
 
     if(filterArray.length >= 1){
       if(filterArray.includes('range1' || 'range2' || 'range3' || 'range4' || 'range5')){
-        if(numberVal > 100000 ){
+        if(localStorage.getItem('$added') === false && numberVal > 100000 ){
           if (filterArray.includes("range2" || 'range3' || 'range4' || 'range5')){
             if(numberVal > 1000000){
               if(filterArray.includes("range3" || 'range4' || 'range5')){
@@ -768,3 +780,40 @@ async function filteredCards(){
   }
 
 }    
+
+
+pageload()
+
+async function pageload(){
+
+if(JSON.parse(localStorage.getItem(`swapitech`)) === null || JSON.parse(localStorage.getItem(`swapitech`)) === undefined || JSON.parse(localStorage.getItem(`swapitech`)) === ""){
+
+for(let i = 2; i <= 40; i++){
+  // userSearch = `https://swapi.dev/api/starships/?search=${formValue}`
+  userSearch = `https://swapi.tech/api/starships/${i}`
+  
+  //fetches the data and stores it to the catchall variable
+  const response2 = await fetch(userSearch)
+  
+  let fetchedData2 = await response2.json()
+  console.log(fetchedData2)
+
+  // let arrayLength = fetchedData2.results.length
+
+  if (fetchedData2.message ==='Not found'){
+    continue
+  }
+
+  searchedData.push(fetchedData2.result.properties)
+
+  localStorage.setItem('swapitech', JSON.stringify(searchedData))
+
+  searchedData = JSON.parse(localStorage.getItem(`swapitech`))
+
+  
+}
+
+}
+  searchedData = JSON.parse(localStorage.getItem(`swapitech`))
+  console.log(searchedData)
+}
