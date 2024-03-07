@@ -41,9 +41,11 @@ main{
 
      /*styles the banner card */
      #banner{
-        height: 35vh;
-        border: 3px solid rgb(255, 255, 255);
-        border-radius: 15px;
+        height: 25vh;
+        margin-top: 56px;
+        /*border: 3px solid rgb(255, 255, 255); */
+        border-radius: 25px;
+        background-color: #212121
     }
 
 
@@ -150,6 +152,12 @@ main{
         margin: 4%;
         margin-top: 50px;
         margin-bottom: 0px;
+    }
+
+    #banner {
+        margin: 4%;
+        width: 93%;
+
     }
   }
   
