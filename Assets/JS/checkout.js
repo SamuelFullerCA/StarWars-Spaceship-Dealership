@@ -1,6 +1,18 @@
 
+let planetgen;
+const planets = ["Exegol", "Bracca", "Nevarro", "Dantooine", "Chandrila", "Hoth", "Morak", "Ajan Kloss"];
+
+
+
+
+
+
+
+
+
 
 makeCheckoutCart()
+
 
 
 function makeCheckoutCart(){
@@ -77,12 +89,12 @@ function makeCheckoutCart(){
 
 
 function onSubmit(event) {
-const planets = ["Exegol", "Bracca", "Nevarro", "Dantooine", "Chandrila", "Hoth", "Morak", "Ajan Kloss"];
 //Activates modal to pop up
-function onSubmit (event){
+
     event.preventDefault()
-        modalInstance.open();
+    modalInstance.open();
     }
+    
     
     let modalElement = document.querySelectorAll('#modal1');
     let modalInstance;
@@ -92,11 +104,11 @@ function onSubmit (event){
         modalInstance = M.Modal.init(modalElement,)[0];
       });
 
-    }
+    
 
-
-const randomPlanet = Math.floor(Math.random() * planets.length)
-   
+    
+    const randomPlanet = Math.floor(Math.random() * planets.length)
+    
 
 
 
