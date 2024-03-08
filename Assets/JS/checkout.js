@@ -22,14 +22,19 @@
 // checkout()
 function onSubmit (event){
 event.preventDefault()
+let instance=M.Modal.getInstance(document.querySelectorAll('.modal'));
 if  (isValid()){
-    document.querySelector("#submitButton").setAttribute('class', 'modal-trigger')
-    console.log('Hello')
-    
-}else {
-document.querySelector("#submitButton").removeAttribute('class', 'modal-trigger')
+    // document.querySelector("#submitButton").setAttribute('class', 'modal-trigger')
+    // document.querySelector("#submitButton").anchor.setAttribute('href', '#modal1')
+    // document.getElementById("modal1").style.display = "block"
+    instance.open();
 }
+// }else {
+// document.querySelector("#submitButton").removeAttribute('class', 'modal-trigger')
+// console.log('fsfsfsf')
+// }
 }
+
 function isValid (){
     return(document.querySelector('#name').value !== "" &&
 document.querySelector('#email').value !== "" &&
