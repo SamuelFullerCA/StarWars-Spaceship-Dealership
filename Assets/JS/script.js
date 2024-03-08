@@ -164,7 +164,7 @@ async function starshipCards(){
     addCart.setAttribute('id', `${searchedDataSpecific.result[i].properties.name}`)
     addCart.setAttribute('onclick', "M.toast({html: 'Added to cart!', classes: 'rounded'})")
     addCart.textContent = `Purchase`
-    document.querySelector('displayCards').append(starshipName,starshipImg, costText)
+    // document.querySelector('displayCards').append(starshipName,starshipImg, costText)
  
 
     let revealActivator = document.createElement('i');
