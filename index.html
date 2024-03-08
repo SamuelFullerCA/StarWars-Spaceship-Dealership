@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="./Assets/CSS/materialize.min.css"  media="screen,projection"/>
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="./Assets/CSS/materialize.min.css" media="screen,projection" />
 
-    <link type="text/css" rel="stylesheet" href="./Assets/CSS/style.css"/>
+  <link type="text/css" rel="stylesheet" href="./Assets/CSS/style.css" />
 
-    <link type="text/css" rel="stylesheet" href="./Assets/CSS/nouislider.css"/>
+  <link type="text/css" rel="stylesheet" href="./Assets/CSS/nouislider.css" />
 
-   
 
-    <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
-    <title>Starwars Dealership</title>
+
+  <!-- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> -->
+  <title>Starwars Dealership</title>
 </head>
 
 
@@ -26,228 +27,238 @@
     <source src="./Assets/Images/particles_-_323 (Original).mp4" type="video/mp4">
   </video>
 
-    <header>
-          <!-- Dropdown Structure -->
-          <ul id="dropdown1" class="dropdown-content">
-          <li><a href="#!">one</a></li>
-          <li><a href="#!">two</a></li>
-          <li class="divider"></li>
-          <li id = "buttonclick"><a href="#!">Checkout</a></li>
-        </li>
-        </ul>
-        <nav id="navbarcss" class=" grey darken-4">
-        <div id="headercss" class="nav-wrapper  ">
-         <a href="#!" class="pageName">Starship Dealership</a>
-         <ul class="right hide-on-med-and-down">
-        <!-- Dropdown Trigger -->
-        <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Shopping Cart 🛒<i class="material-icons right">arrow_drop_down</i></a></li>
+  <header>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+      <li><a href="#!">one</a></li>
+      <li><a href="#!">two</a></li>
+      <li class="divider"></li>
+      <li id="buttonclick"><a href="#!">Checkout</a></li>
+      </li>
     </ul>
-  </div>
-</nav>
-    </header>
+    <nav id="navbarcss" class=" grey darken-4">
+      <div id="headercss" class="nav-wrapper  ">
+        <a href="#!" class="pageName">Starship </a>
+        <a href="#!" class="pageName" id="dealership">Dealership</a>
+        <ul class="right hide-on-med-and-down">
+          <!-- Dropdown Trigger -->
+          <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Shopping Cart 🛒<i
+                class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-    <main>
-        <!-- section wrap for search box and banner -->
-        <div class="row">
-            <!-- searchbox -->
-            <aside id="searchBoxcss" class="col s3" >
-                <div id="searchBox" class="card">
-                    <div class="card-image waves-effect waves-block waves-light"></div>
-                <div class="card-content" id="searchBox">
-                  <span class="card-title ">Search for specific starships</span>
-                  <div class="row">
-                    <div class="col s12">
-                      <div class="row">
-                        <div class="input-field col s12">
-                          <i class="material-icons prefix">search</i>
-                          <input type="text" id="autocomplete-input" class="autocomplete white-text">
-                          <label id="labelcss" for="autocomplete-input">Starship</label>
-                          <button id="searchBtn"  class="waves-effect waves-light btn">search</button>
+  <main>
+    <!-- section wrap for search box and banner -->
+    <div class="row">
+      <!-- searchbox -->
+      <aside id="searchBoxcss" class="col s3">
+        <div id="searchBox" class="card">
+          <div class="card-image waves-effect waves-block waves-light"></div>
+          <div class="card-content" id="searchBox">
+            <span class="card-title ">Search for specific starships</span>
+            <div class="row">
+              <div class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">search</i>
+                    <input type="text" id="autocomplete-input" class="autocomplete white-text">
+                    <label id="labelcss" for="autocomplete-input">Starship</label>
+                    <button id="searchBtn" class="waves-effect waves-light btn">search</button>
 
-                          <!-- modal trigger -->
-                          <a class="btn-floating halfway-fab waves-effect waves-light grey darken-2 modal-trigger " href="#advanceFilters"> <i class="material-icons">filter_list</i></a>
+                    <!-- modal trigger -->
+                    <a class="btn-floating halfway-fab waves-effect waves-light grey darken-2 modal-trigger "
+                      href="#advanceFilters"> <i class="material-icons">filter_list</i></a>
 
-                          <!-- Modal Structure -->
-                          <div id="advanceFilters" class="modal grey darken-4">
-                            <div class="modal-content">
-                              <h4>Advanced Filtered Search</h4>
-                         
+                    <!-- Modal Structure -->
+                    <div id="advanceFilters" class="modal grey darken-4">
+                      <div class="modal-content">
+                        <h4>Advanced Filtered Search</h4>
+
                         <!-- filters inside modal       -->
                         <div class="row">
 
-                                <!-- hyperdrive slider -->
-                                  <div class="col s6">
-                                    <p></p>Hyperdrive Class Range: slider value and below</p>
-                                    <p class="range-field">
-                                      <input type="range" id="rangeSlider" min="0" max="4" />
-                                    </p>
-                                  </div>
+                          <!-- hyperdrive slider -->
+                          <div class="col s6">
+                            <p></p>Hyperdrive Class Range: slider value and below</p>
+                            <p class="range-field">
+                              <input type="range" id="rangeSlider" min="0" max="4" />
+                            </p>
+                          </div>
 
-                                  <!-- class selector -->
-                                  <div class="input-field col s6">
-                                    <select  multiple id="option-select">
-                                      <option value="" disabled selected>Select Multiple</option>
-                                      <option id="class1" value="corvette">Corvette</option>
-                                      <option id="class2" value="cruiser">Cruiser</option>
-                                      <option id="class3" value="capital">Capital ship</option>
-                                      <option id="class4" value="dreadnought">Dreadnought</option>
-                                      <option id="class5" value="destroyer">Destroyer</option>
-                                      <option id="class6" value="freighter">Freighter</option>
-                                      <option id="class7" value="starfighter">Starfighter</option>
-                                      <option id="class8" value="transport">Transport</option>
-                                      <option id="class9" value="yacht">Yacht</option>
-                                      <option id="class10" value="other">Other</option>
-                                    </select>
-                                    <label class="white-text" id="classList">Starship Class:</label>
-                                  </div>
+                          <!-- class selector -->
+                          <div class="input-field col s6">
+                            <select multiple id="option-select">
+                              <option value="" disabled selected>Select Multiple</option>
+                              <option id="class1" value="corvette">Corvette</option>
+                              <option id="class2" value="cruiser">Cruiser</option>
+                              <option id="class3" value="capital">Capital ship</option>
+                              <option id="class4" value="dreadnought">Dreadnought</option>
+                              <option id="class5" value="destroyer">Destroyer</option>
+                              <option id="class6" value="freighter">Freighter</option>
+                              <option id="class7" value="starfighter">Starfighter</option>
+                              <option id="class8" value="transport">Transport</option>
+                              <option id="class9" value="yacht">Yacht</option>
+                              <option id="class10" value="other">Other</option>
+                            </select>
+                            <label class="white-text" id="classList">Starship Class:</label>
+                          </div>
 
-                                  <!-- Passenger question -->
-                                  <form action="#" class="col s6">
-                                    <p>Do you need a ship capable of supporting passangers?:</p>
-                                    <p>
-                                      <label id="passengersYes">
-                                        <input name="group1" type="radio" checked />
-                                        <span>Yes</span>
-                                      </label>
-                                    </p>
-                                    <p>
-                                      <label id="passengersNo">
-                                        <input name="group1" type="radio" />
-                                        <span>No </span>
-                                      </label>
-                                    </p>
-                                  </form>
-                                  
-                                  <!-- Unavailiable starship question -->
-                                  <form action="#" class="col s6">
-                                    <br>
-                                    <p>Show Unavailable Starships?:</p>
-                                    <p>
-                                      <label id="unavaYes">
-                                        <input name="group1" type="radio" checked />
-                                        <span>Yes</span>
-                                      </label>
-                                    </p>
-                                    <p>
-                                      <label id="unavaNo">
-                                        <input name="group1" type="radio" />
-                                        <span>No </span>
-                                      </label>
-                                    </p>
-                                  </form>
+                          <!-- Passenger question -->
+                          <form action="#" class="col s6">
+                            <p>Do you need a ship capable of supporting passangers?:</p>
+                            <p>
+                              <label id="passengersYes">
+                                <input name="group1" type="radio" checked />
+                                <span>Yes</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label id="passengersNo">
+                                <input name="group1" type="radio" />
+                                <span>No </span>
+                              </label>
+                            </p>
+                          </form>
 
-                                  <!-- Prince Range -->
-                                  <div class="col s6">
-                                    <br>
-                                     Specific Price Range:
-                                    <p>
-                                      <label>
-                                        <input type="checkbox" />
-                                       <span class="price" id="price1">0-100,000 Credits</span>
-                                      </label>
-                                   </p>
-                                   <p>
-                                      <label>
-                                       <input type="checkbox" />
-                                        <span class="price" id="price2">100,000 - 1,000,000 Credits</span>
-                                     </label>
-                                    </p>
-                                    <p>
-                                      <label>
-                                       <input type="checkbox" />
-                                        <span class="price" id="price3">1,000,000 - 10,000,000 Credits</span>
-                                      </label>
-                                    </p>
-                                    <p>
-                                      <label>
-                                        <input type="checkbox" />
-                                        <span class="price" id="price4">10,000,000 - 100,000,000 Credits</span>
-                                      </label>
-                                    </p>
-                                    <p>
-                                      <label>
-                                        <input type="checkbox" />
-                                        <span class="price" id="price5">100,000,000+ Credits</span>
-                                      </label>
-                                    </p>
-                                  </div>
+                          <!-- Unavailiable starship question -->
+                          <form action="#" class="col s6">
+                            <br>
+                            <p>Show Unavailable Starships?:</p>
+                            <p>
+                              <label id="unavaYes">
+                                <input name="group1" type="radio" checked />
+                                <span>Yes</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label id="unavaNo">
+                                <input name="group1" type="radio" />
+                                <span>No </span>
+                              </label>
+                            </p>
+                          </form>
 
-                                  <!-- Picture preference -->
-                                  <div class="input-field col s6">
-                                    <br>
-                                    <select class="icons">
-                                      <option value="" disabled selected>Picture Preference</option>
-                                      <option value="" data-icon="./Assets/Images/Placeholder.jpg">example 1</option>
-                                      <option value="" data-icon="./Assets/Images/Placeholder.jpg">example 2</option>
-                                    </select>
-                                    <br>
-                                    <label class="white-text">Picture Style</label>
-                                  </div>
+                          <!-- Prince Range -->
+                          <div class="col s6">
+                            <br>
+                            Specific Price Range:
+                            <p>
+                              <label>
+                                <input type="checkbox" />
+                                <span class="price" id="price1">0-100,000 Credits</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input type="checkbox" />
+                                <span class="price" id="price2">100,000 - 1,000,000 Credits</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input type="checkbox" />
+                                <span class="price" id="price3">1,000,000 - 10,000,000 Credits</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input type="checkbox" />
+                                <span class="price" id="price4">10,000,000 - 100,000,000 Credits</span>
+                              </label>
+                            </p>
+                            <p>
+                              <label>
+                                <input type="checkbox" />
+                                <span class="price" id="price5">100,000,000+ Credits</span>
+                              </label>
+                            </p>
+                          </div>
 
-                                  <!-- possible addition for land vehicles -->
-                                  <div class="switch col s6" >
-                                    <br>
-                                    Non-FTL vehicles:
-                                    <br>
-                                    <label>
-                                      Off
-                                      <input type="checkbox">
-                                      <span class="lever"></span>
-                                      On
-                                    </label>
-                                  </div>
-                        </div>
-                            <!-- modal footer -->
-                            </div>
-                            <div class="modal-footer grey darken-4">
-                              <a id="filteredSearchBtn" href="#!" class="modal-close waves-effect waves-green green darken-4 btn-flat">Filtered Search</a>
+                          <!-- Picture preference -->
+                          <div class="input-field col s6">
+                            <br>
+                            <select class="icons">
+                              <option value="" disabled selected>Picture Preference</option>
+                              <option value="" data-icon="./Assets/Images/Placeholder.jpg">example 1</option>
+                              <option value="" data-icon="./Assets/Images/Placeholder.jpg">example 2</option>
+                            </select>
+                            <br>
+                            <label class="white-text">Picture Style</label>
+                          </div>
 
-
-                            </div>
+                          <!-- possible addition for land vehicles -->
+                          <div class="switch col s6">
+                            <br>
+                            Non-FTL vehicles:
+                            <br>
+                            <label>
+                              Off
+                              <input type="checkbox">
+                              <span class="lever"></span>
+                              On
+                            </label>
                           </div>
                         </div>
+
+                        <!-- modal footer -->
+
+                        <div class="modal-footer grey darken-4">
+                          <a id="filteredSearchBtn" href="#!"
+                            class="modal-close waves-effect waves-green green darken-4 btn-flat">Filtered Search</a>
+
+                        </div>
                       </div>
+
                     </div>
                   </div>
                 </div>
-
-
-                <!-- card reveal if we want to change back it didnt have a lot of space -->
-                <!-- <div class="card-reveal grey darken-4">
-                  <span  class="card-title ">Advanced Search<i class="material-icons right">close</i></span>
-                
-                
-                  
-                </div>
               </div>
-            </aside>
+            </div>
+          </div>
+      </aside>
 
-              <!-- banner -->
-            <section class="col s8" id="banner">
-                <div class="text-box">
-                  <h2 id="bannerHeader">Featured Starship</h2>
-                  <h4 id="bannerShip"> The Death Star </h4>
-                  <p id="bannerDetails">  
-                    Price: <br>
-                    MGLT: <br>
-                    Hyperdrive: <br>
+      <!-- banner -->
+      <section class="card col s8" id="banner">
+        <div class="card-content" id="banner-text">
+          <h2 id="bannerHeader">Featured Starship</h2>
+          <h4 id="bannerShip"> The Death Star </h4>
+          <p id="bannerDetails">
+            Model: DS-1 Orbiting Battle Station <br>
+            Price: 1000000000000 Credits<br>
+            MGLT: 10<br>
+            Hyperdrive Rating: 4.0<br>
+          </p>
+          <button id="featureBtn" class="activator wave-effect waves-light btn">Show Details</button>
 
-
-                  </p>
-                 
-                </div>
-            </section> 
         </div>
-                
+        <div class="card-reveal">
+          <span class="card-title ">Specifications<i class="material-icons-right"></i></span>
+          <p>
+            Name: Death Star <br>
+            Model: DS-1 Orbital Battle Station <br>
+            Starship Class: Deep Space Mobile Battlestation <br>
+            Manufacturer: Imperial Department of Military Research, Sienar Fleet Systems <br>
+            Length: 120000 <br>
+            Atmospheric Speed: n/a <br>
+            Crew Size: 342953 <br>
+            Passengers: 843342 <br>
+            Cargo Capacity: 1000000000000 <br>
+          </p>
+        </div>
+      </section>
+    </div>
 
-        <!-- section wrap for spaceship cards -->
+
+    <!-- section wrap for spaceship cards -->
     <section id="displayedCards" class="row">
 
-        </section>
-    </main >
+    </section>
+  </main>
 
 
-    
+
 
 
 </body>

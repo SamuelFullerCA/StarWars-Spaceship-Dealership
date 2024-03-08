@@ -35,8 +35,7 @@ async function searhApi(){
   }
 
   //runs the function to create cards
-  starshipCards()
-  
+  starshipCards() 
 }
 
 async function searhApiFiltered(){
@@ -239,17 +238,6 @@ async function starshipCards(){
 
     revealDiv.append(revealSpan)
 
-
-
-
-
-
-
-
-
-
-
-
     //appends the card to the wrap
     divWrap.append(starshipCard)
     
@@ -266,7 +254,6 @@ async function starshipCards(){
 //runs the fuctions on search button click
 const search = document.querySelector("#searchBtn")
 search.addEventListener('click', searhApi);
-
 
 const searchFiltered = document.querySelector("#filteredSearchBtn")
 searchFiltered.addEventListener('click', searhApiFiltered);
@@ -762,8 +749,6 @@ async function filteredCards(){
       }
     }
 
-
-
     let revealClass = document.createElement('p');
     revealClass.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
     revealClass.textContent = `Starship Class: ${searchedData[i].starship_class}`;
@@ -776,17 +761,6 @@ async function filteredCards(){
     revealSpan.append(revealClose, revealName, revealModel, revealClass, revealManufacturer, revealCost, revealLength, revealSpeed, revealCrew, revealPassengers, revealCargo, revealHyper, revealMGLT)
 
     revealDiv.append(revealSpan)
-
-
-
-
-
-
-
-
-
-
-
 
     //appends the card to the wrap
     divWrap.append(starshipCard)
