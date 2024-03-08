@@ -21,3 +21,33 @@ document.querySelector('.cards').appendChild(title, description);
 
 checkout()
 }
+makeCheckoutCart()
+
+
+function makeCheckoutCart(){
+
+    let pulledData = JSON.parse(localStorage.getItem(`swapitech`))
+    let pulledArray = JSON.parse(localStorage.getItem(`cartArray`))
+    let tBody = document.querySelector('#cartDisplay')
+
+    let tr = document.createElement('tr')
+    tr.setAttribute('id', `${pulledArray[0]}`)
+
+    let td1 = document.createElement('td')
+    td1.textContent = `${pulledArray[0]}`
+
+    let td2 = document.createElement('td')
+    td2.textContent = `${pulledData[0].cost_in_credits}`
+
+    tr.append(td1, td2)
+    tBody.append(tr)
+
+
+    
+}
+
+
+
+
+
+

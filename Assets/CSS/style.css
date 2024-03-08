@@ -15,7 +15,7 @@
 
   /* all style elements inside the header section are nested in here */
 header{
-    font-family: Aurebesh;
+    /* font-family: Aurebesh; */
 
     /* styles the navbar */
     #navbarcss{
@@ -242,3 +242,6 @@ input[type=range] + .thumb.active .value {
 }
 
 
+.cartItem{
+    font-size: 75% !important
+}

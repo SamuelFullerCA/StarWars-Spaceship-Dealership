@@ -26,12 +26,11 @@
     <source src="./Assets/Images/particles_-_323 (Original).mp4" type="video/mp4">
   </video>
 
-    <header>
+    <header >
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content">
-          <li><a href="#!">one</a></li>
-          <li><a href="#!">two</a></li>
           <li class="divider"></li>
+          <li tabindex="0"><a href="">Click items to remove</a>
           <li id = "buttonclick"><a href="#!">Checkout</a></li>
         </li>
         </ul>
@@ -77,9 +76,11 @@
 
                                 <!-- hyperdrive slider -->
                                   <div class="col s6">
-                                    <p></p>Hyperdrive Class Range: slider value and below</p>
+                                    <p>Maximum Hyperdrive Class:</p>
+                                    <p>*lower value is faster</p>
+
                                     <p class="range-field">
-                                      <input type="range" id="rangeSlider" min="0" max="4" />
+                                      <input type="range" id="rangeSliderClass" min="0" max="4" />
                                     </p>
                                   </div>
 
@@ -87,16 +88,18 @@
                                   <div class="input-field col s6">
                                     <select  multiple id="option-select">
                                       <option value="" disabled selected>Select Multiple</option>
-                                      <option id="class1" value="corvette">Corvette</option>
-                                      <option id="class2" value="cruiser">Cruiser</option>
-                                      <option id="class3" value="capital">Capital ship</option>
-                                      <option id="class4" value="dreadnought">Dreadnought</option>
-                                      <option id="class5" value="destroyer">Destroyer</option>
-                                      <option id="class6" value="freighter">Freighter</option>
-                                      <option id="class7" value="starfighter">Starfighter</option>
-                                      <option id="class8" value="transport">Transport</option>
-                                      <option id="class9" value="yacht">Yacht</option>
-                                      <option id="class10" value="other">Other</option>
+                                      <option id="class1" value="barge">Barge</option>
+                                      <option id="class2" value="battlestation">Battlestation</option>
+                                      <option id="class3" value="corvette">Corvette</option>
+                                      <option id="class4" value="craft">Craft</option>
+                                      <option id="class5" value="cruiser">Cruiser</option>
+                                      <option id="class6" value="dreadnought">Dreadnought</option>
+                                      <option id="class7" value="destroyer">Destroyer</option>
+                                      <option id="class8" value="freighter">Freighter</option>
+                                      <option id="class9" value="starfighter">Starfighter</option>
+                                      <option id="class10" value="transport">Transport</option>
+                                      <option id="class11" value="yacht">Yacht</option>
+                                      <option id="class1" value="ship">Other</option>
                                     </select>
                                     <label class="white-text" id="classList">Starship Class:</label>
                                   </div>
@@ -177,25 +180,41 @@
                                     <br>
                                     <select class="icons">
                                       <option value="" disabled selected>Picture Preference</option>
-                                      <option value="" data-icon="./Assets/Images/Placeholder.jpg">example 1</option>
-                                      <option value="" data-icon="./Assets/Images/Placeholder.jpg">example 2</option>
+                                      <option id= "placeholderImages" data-icon="./Assets/Images/Placeholder.jpg">Placeholders</option>
+                                      <option id= "googleImages" data-icon="./Assets/Images/jarjar.jpg">Google Image api</option>
                                     </select>
                                     <br>
                                     <label class="white-text">Picture Style</label>
                                   </div>
 
-                                  <!-- possible addition for land vehicles -->
-                                  <div class="switch col s6" >
+
+                                <!-- atmosphering slider -->
+                                <div class="col s6">
+                                  <p></p>Max Atmosphering Speed:</p>
+                                  <p class="range-field">
+                                    <input type="range" id="rangeSliderSpeed" min="0" max="2000+" />
+                                  </p>
+                                </div>
+
+                                                                  <!-- Unavailiable starship question -->
+                                  <form action="#" class="col s6">
                                     <br>
-                                    Non-FTL vehicles:
-                                    <br>
-                                    <label>
-                                      Off
-                                      <input type="checkbox">
-                                      <span class="lever"></span>
-                                      On
-                                    </label>
-                                  </div>
+                                    <p>Show Ships with unknow atmosphering speed?:</p>
+                                    <p>
+                                      <label id="speedYes">
+                                        <input name="group1" type="radio" checked />
+                                        <span>Yes</span>
+                                      </label>
+                                    </p>
+                                    <p>
+                                      <label id="speedNo">
+                                        <input name="group1" type="radio" />
+                                        <span>No </span>
+                                      </label>
+                                    </p>
+                                  </form>
+
+
                         </div>
                             <!-- modal footer -->
                             </div>
