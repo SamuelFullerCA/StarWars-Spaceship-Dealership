@@ -19,26 +19,36 @@
 // // Append the card to the body or any other container
 // document.querySelector('.cards').appendChild(title, description);
 
-// checkout()
-function onSubmit (event){
-event.preventDefault()
-let instance=M.Modal.getInstance(document.querySelectorAll('.modal'));
-if  (isValid()){
-    // document.querySelector("#submitButton").setAttribute('class', 'modal-trigger')
-    // document.querySelector("#submitButton").anchor.setAttribute('href', '#modal1')
-    // document.getElementById("modal1").style.display = "block"
-    instance.open();
-}
-// }else {
-// document.querySelector("#submitButton").removeAttribute('class', 'modal-trigger')
-// console.log('fsfsfsf')
-// }
+function onSubmit(event) {
+    event.preventDefault()
+    modalInstance.open();
 }
 
-function isValid (){
-    return(document.querySelector('#name').value !== "" &&
-document.querySelector('#email').value !== "" &&
-document.querySelector('#address').value !== "" &&
-document.querySelector('#city').value !== "" &&
-document.querySelector('#zip').value !== "")
-}
+let modalElement = document.querySelectorAll('#modal1');
+let modalInstance;
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('hello')
+    modalInstance = M.Modal.init(modalElement,)[0];
+});
+
+// checkout()
+// function onSubmit(event) {
+//     event.preventDefault()
+//     if (isValid()) {
+//         document.querySelector("#submitButton").setAttribute('class', 'modal-trigger')
+//         // document.getElementById("modal1").style.display = "block"
+
+//     } else {
+//         document.querySelector("#submitButton").removeAttribute('class', 'modal-trigger')
+//         console.log('fsfsfsf')
+//     }
+// }
+
+// function isValid() {
+//     return (document.querySelector('#name').value !== "" &&
+//         document.querySelector('#email').value !== "" &&
+//         document.querySelector('#address').value !== "" &&
+//         document.querySelector('#city').value !== "" &&
+//         document.querySelector('#zip').value !== "")
+// }
