@@ -74,7 +74,7 @@ aside {
 #checkout {
     position: relative;
     /* left: 0px */
-    min-width: 600px;
+    min-width: 500px;
     
 }
 
@@ -120,4 +120,14 @@ aside {
 @font-face {
     font-family: Aurebesh;
     src: url(../Aurebesh.ttf);
+
+}
+
+
+ /* Large smartphones 768px*/
+ @media screen and (max-width: 972px) {
+    .centered-container {
+        display: block;
+    }
+  }
 }
