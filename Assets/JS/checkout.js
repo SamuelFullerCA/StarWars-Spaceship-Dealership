@@ -1,11 +1,100 @@
 
-let planetGen;
+let planetgen;
 const planets = ["Exegol", "Bracca", "Nevarro", "Dantooine", "Chandrila", "Hoth", "Morak", "Ajan Kloss"];
-//Activates modal to pop up
-function onSubmit (event){
-    event.preventDefault()
-        modalInstance.open();
+
+
+
+
+
+
+
+
+
+
+makeCheckoutCart()
+
+
+
+function makeCheckoutCart(){
+
+    let pulledData = JSON.parse(localStorage.getItem(`swapitech`))
+    let pulledArray = JSON.parse(localStorage.getItem(`cartArray`))
+    let tBody = document.querySelector('#cartDisplay')
+    let price;
+    let totalCost = 0;
+
+    loop1: for(let i = 0; i < pulledArray.length; i++){
+
+        let tr = document.createElement('tr')
+        tr.setAttribute('id', `${pulledArray[i]}`)
+
+        let td1 = document.createElement('td')
+        td1.textContent = `${pulledArray[i]}`
+
+        console.log(pulledArray)
+        console.log(pulledData)
+        
+        
+        for(let j = 0; j < pulledData.length; j++){
+            matchCheck = pulledData[j].name
+            if(matchCheck.includes(pulledArray[i])){
+                
+                price = pulledData[j].cost_in_credits
+                
+
+                
+            }else{
+                continue
+            }
+
+        }
+
+        let td2 = document.createElement('td')
+        td2.textContent = `${price}`
+
+        let priceInt = parseInt(price)
+        console.log(priceInt)
+        totalCost = priceInt + totalCost
+
+
+        tr.append(td1, td2)
+        tBody.append(tr)
+
+        
+
+
+
+
+
+
+
+
     }
+
+    let tFoot = document.querySelector('#cartFooter')
+        let trFoot = document.createElement('tr')
+
+        let tdFoot = document.createElement('td')
+        tdFoot.textContent = `${totalCost}`
+
+
+
+        tFoot.append(trFoot)
+        trFoot.append(tdFoot)
+}
+
+
+
+
+
+
+function onSubmit(event) {
+//Activates modal to pop up
+
+    event.preventDefault()
+    modalInstance.open();
+    }
+    
     
     let modalElement = document.querySelectorAll('#modal1');
     let modalInstance;
@@ -15,9 +104,11 @@ function onSubmit (event){
         modalInstance = M.Modal.init(modalElement,)[0];
       });
 
+    
 
-const randomPlanet = Math.floor(Math.random() * planets.length)
-   
+    
+    const randomPlanet = Math.floor(Math.random() * planets.length)
+    
 
 
 
@@ -57,4 +148,12 @@ function modalContent(){
 
   
 }
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    console.log('hello')
+    modalInstance = M.Modal.init(modalElement,)[0];
+});
+
+
 

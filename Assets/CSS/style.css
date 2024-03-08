@@ -276,3 +276,6 @@ input[type=range] + .thumb.active .value {
 }
 
 
+.cartItem{
+    font-size: 75% !important
+}
