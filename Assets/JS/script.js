@@ -32,8 +32,7 @@ async function searhApi(){
   }
 
   //runs the function to create cards
-  starshipCards()
-  
+  starshipCards() 
 }
 
 //function that pulls an array of starships based on filter queries

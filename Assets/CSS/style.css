@@ -15,7 +15,7 @@
 
   /* all style elements inside the header section are nested in here */
 header{
-    /* font-family: Aurebesh; */
+    font-family: Starjedi;
 
     /* styles the navbar */
     #navbarcss{
@@ -32,6 +32,12 @@ header{
         font-family: Aurebesh;
     }
 
+    #dealership {
+        font-family: Starjedi;
+        color: #ffe81f;
+        margin-left: 0px;
+    }
+
     .dropdown-trigger {
         font-size: 30px;
     }
@@ -45,13 +51,15 @@ header{
 main{
     height: 100vh;
 
+    .btn {
+        background-color: gray;
+    }
 
     /* styles the while searchbox card */
     #searchBox{
         background-color: #212121;
         color: aliceblue;
         border-radius: 25px;
-
     
     }
 
@@ -60,11 +68,12 @@ main{
         height: 35vh;
         border: 3px solid rgb(255, 255, 255);
         border-radius: 15px;
-
+        
     }
 
     /*styles the banner card */
     #banner{
+        position: relative;
         height: 300px;
         width: 1000px;
         margin-top: 56px;
@@ -72,19 +81,35 @@ main{
         border-radius: 25px;
         background-image: url(../Images/featuredDeathstar.jpg);
         background-size: 100% 100%;
+
     }
     
     #bannerHeader {
         margin-top: 0px;
+        color: #ffe81f;
     }
     
-    .text-box{
+    .card-content{
         position: relative;
         font-family: Starjedi;
         color: white;
         margin-left: 10px;
     }
 
+    .card .card-reveal {
+        background-color: #212121;
+        color: #fff;
+    }
+
+    .card .card-reveal .card-title {
+        color: white;
+    }
+
+
+
+    #banner-text {
+        padding: 0px;
+    }
     
 
     /* styles the starship card and everything inside */
