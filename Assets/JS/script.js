@@ -17,6 +17,8 @@ async function searhApi(){
 
   //assigns the api with the search parameter of the users input to a variable
   userSearch = `https://swapi.tech/api/starships/?name=${formValue}`
+
+  
   
   
   //fetches the data and stores it to the catchall variable
@@ -24,6 +26,7 @@ async function searhApi(){
   let fetchedData2 = await response2.json()
   console.log(fetchedData2)
   searchedDataSpecific = fetchedData2
+
   
   //deletes the cards generated from previous search
   const previousCards = document.querySelector('#divWrap')
@@ -68,18 +71,53 @@ async function starshipCards(){
 
     // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
     // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
-    test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedDataSpecific.result[i].properties.model}`
-    const response = await fetch(test2)
-    let fetchedData = await response.json()
-    console.log(fetchedData)
-    imageData = fetchedData
+
+    if(localStorage.getItem('imageType') === 'googleApi'){
+      test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedDataSpecific.result[i].properties.model}`
+      const response = await fetch(test2)
+      let fetchedData = await response.json()
+      console.log(fetchedData)
+      imageData = fetchedData
+    
+      let maxxed = Object.keys(imageData).length
+
+      if (maxxed === 1){
+        backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=3&q=${searchedDataSpecific.result[i].properties.model}`
+        const response = await fetch(backup1)
+        let fetchedData = await response.json()
+        console.log(fetchedData)
+        imageData = fetchedData
+
+        let maxxed = Object.keys(imageData).length
+
+        if(maxxed === 1){
+          //need keanus key
+          backup2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBkW2WaIkGC2twtTZJVrgNQUuDBFv5Ut90&cx=d51f763a8ffcb4269&searchType=image&num=3&q=${searchedDataSpecific.result[i].properties.model}`
+          const response = await fetch(backup1)
+          let fetchedData = await response.json()
+          console.log(fetchedData)
+          imageData = fetchedData
+
+          let maxxed = Object.keys(imageData).length
+
+          if (maxxed === 1){
+            localStorage.setItem('imageType', 'placeholders')
+          }
+        }
+      }
+    } 
+
 
  
     //generates the image 
     let starshipImg =  document.createElement('IMG')
-    starshipImg.setAttribute('src', `${imageData.items[0].link}`)
+    if(localStorage.getItem('imageType') === 'placeholders'){
+      starshipImg.src = './Assets/Images/Placeholder.jpg'
+    }else{
+      starshipImg.setAttribute('src', `${imageData.items[0].link}`)
+    }
     // placeholder for max image search
-    // starshipImg.src = './Assets/Images/Placeholder.jpg'
+    
     starshipImg.setAttribute('width', '275')
     starshipImg.setAttribute('height', '150')
     starshipImg.setAttribute('class', 'imgCss')
@@ -121,6 +159,7 @@ async function starshipCards(){
     //generates the purchase button with materalize features
     let addCart = document.createElement('button')
     addCart.setAttribute('class', `waves-effect waves-light btn addCart`)
+    addCart.setAttribute('value', `${searchedDataSpecific.result[i].properties.cost_in_credits}`)
     addCart.setAttribute('id', `${searchedDataSpecific.result[i].properties.name}`)
     addCart.setAttribute('onclick', "M.toast({html: 'Added to cart!', classes: 'rounded'})")
     addCart.textContent = `Purchase`
@@ -287,6 +326,18 @@ speedYes.addEventListener("click", function(){
     localStorage.setItem('speed',  "yes")
 })
 
+//local storage for picture type filter
+  //first local storage listener
+  const GoogleApi = document.querySelector('#googleApi')
+  GoogleApi.addEventListener("click", function(){
+      localStorage.setItem('imageType',  "googleApi")
+  })
+    //second local storage listener
+  const placeholders = document.querySelector('#placeholders')
+  placeholders.addEventListener("click", function(){
+      localStorage.setItem('imageType',  "placeholders")
+  })
+
 //local storage for support passengers filter
   //first local storage listener
 const passengersNo = document.querySelector('#passengersNo')
@@ -318,6 +369,7 @@ document.addEventListener("DOMContentLoaded", function () {
 localStorage.setItem('hclassValue', '4')
 localStorage.setItem('speedValue', '8000')
 localStorage.setItem("suppotPassengers", 'yes')
+localStorage.setItem('imageType',  "googleApi")
 localStorage.setItem("speed", 'yes')
 localStorage.setItem("unavaliableShip", 'yes')
 localStorage.setItem('priceArray', JSON.stringify([]))
@@ -542,17 +594,51 @@ async function filteredCards(){
 
     // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
     // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
-    // test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedData[i].model}`
-    // const response = await fetch(test2)
-    // let fetchedData = await response.json()
-    // console.log(fetchedData)
-    // imageData = fetchedData
+    if(localStorage.getItem('imageType') === 'googleApi'){
+      test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedData[i].model}`
+      const response = await fetch(test2)
+      let fetchedData = await response.json()
+      console.log(fetchedData)
+      imageData = fetchedData
+      console.log('Sams key')
+      let maxxed = Object.keys(imageData).length
+
+      if (maxxed === 1){
+        backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=3&q=${searchedData[i].model}`
+        const response = await fetch(backup1)
+        let fetchedData = await response.json()
+        console.log(fetchedData)
+        imageData = fetchedData
+        console.log('Willies key')
+        let maxxed = Object.keys(imageData).length
+
+        if (maxxed === 1){
+          //need keanus key
+          backup2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBkW2WaIkGC2twtTZJVrgNQUuDBFv5Ut90&cx=d51f763a8ffcb4269&searchType=image&num=3&q=${searchedData[i].model}`
+          const response = await fetch(backup2)
+          let fetchedData = await response.json()
+          console.log(fetchedData)
+          imageData = fetchedData
+          console.log('Keanu key')
+          let maxxed = Object.keys(imageData).length
+
+          if (maxxed === 1){
+            localStorage.setItem('imageType', 'placeholders' )
+          }
+        }
+      }
+    }
+  
 
     //generates the image 
     let starshipImg =  document.createElement('IMG')
-    // starshipImg.setAttribute('src', `${imageData.items[i].link}`)
+    if(localStorage.getItem('imageType') === 'placeholders'){
+      starshipImg.src = './Assets/Images/Placeholder.jpg'
+    }else{
+      starshipImg.setAttribute('src', `${imageData.items[0].link}`)
+    }
     // placeholder for max image search
-    starshipImg.src = './Assets/Images/Placeholder.jpg'
+    // starshipImg.src = './Assets/Images/Placeholder.jpg'
     starshipImg.setAttribute('width', '275')
     starshipImg.setAttribute('height', '150')
     starshipImg.setAttribute('class', 'imgCss')
@@ -657,13 +743,16 @@ async function filteredCards(){
       }
     }
 
+    
+
     // generates the hyperdrive rating text
     let shipHdrive = document.createElement('p')
     shipHdrive.textContent = `Hyperdrive Rating: ${searchedData[i].hyperdrive_rating} `
 
     //generates the purchase button with materalize features
     let addCart = document.createElement('button')
-    addCart.setAttribute('class', `waves-effect waves-light btn addCart`)
+    addCart.setAttribute('class', `waves-effect waves-light btn addCart `)
+    addCart.setAttribute('value', `${searchedData[i].cost_in_credits}`)
     addCart.setAttribute('id', `${searchedData[i].name}`)
     addCart.setAttribute('onclick', "M.toast({html: 'Added to cart!', classes: 'rounded'})")
     addCart.textContent = `Purchase`
@@ -830,9 +919,12 @@ async function filteredCards(){
   //functionality for added an event listener to aver add card button that was generated
   cartBtn2 = document.querySelectorAll('.addCart')
     //for loop to apply to each button
-    for (let i = 0; i < cartBtn2.length; i++) {
-      cartBtn2[i].addEventListener('click', addCartClick2);
-    }
+      for (let k = 0; k < cartBtn2.length; k++) {
+        
+        cartBtn2[k].addEventListener('click', addCartClick2);
+      }
+    
+   
 }    
 
 //runs the page load function
@@ -966,6 +1058,12 @@ function polulateCart(){
 //function to add items to card for the searchApi function
 function addCartClick1(event){
   
+    value = event.target.value
+
+    if(value === "unknown" || alue === "n/a"){
+      return
+    }
+
   let pulledCart = JSON.parse(localStorage.getItem(`cartArray`))
  
  
@@ -990,6 +1088,12 @@ function addCartClick1(event){
 //function to add items to card for the searchApiFiltered function 
 function addCartClick2(event){
 
+  value = event.target.value
+
+  if(value === "unknown" || value === "n/a"){
+    return
+  }
+
   let pulledCart = JSON.parse(localStorage.getItem(`cartArray`))
   
   idName = event.target.id
@@ -1010,26 +1114,10 @@ function addCartClick2(event){
   localStorage.setItem('cartArray', JSON.stringify(cartItems))
 }
 
+//function to clear the cart
+const clearCart = document.querySelector('#clearClick')
+clearCart.addEventListener("click", function(){
 
+  localStorage.setItem('cartArray', JSON.stringify([]))
 
-
-function removeFromCart(event){
-  // console.log('ran')
-  // value = event.target.value
-  // console.log(value)
-  // cartData = JSON.parse(localStorage.getItem(`cartArray`))
-
-  // cartArray = cartData.filter(e => e !== 'range5')
-  //pull array from local
-
-  //remvove matching value
-
-  //store array
-
-  //hide the button
-
-
-
-}
-
-
+})

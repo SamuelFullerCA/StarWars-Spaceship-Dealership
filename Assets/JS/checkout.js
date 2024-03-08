@@ -29,22 +29,67 @@ function makeCheckoutCart(){
     let pulledData = JSON.parse(localStorage.getItem(`swapitech`))
     let pulledArray = JSON.parse(localStorage.getItem(`cartArray`))
     let tBody = document.querySelector('#cartDisplay')
+    let price;
+    let totalCost = 0;
 
-    let tr = document.createElement('tr')
-    tr.setAttribute('id', `${pulledArray[0]}`)
+    loop1: for(let i = 0; i < pulledArray.length; i++){
 
-    let td1 = document.createElement('td')
-    td1.textContent = `${pulledArray[0]}`
+        let tr = document.createElement('tr')
+        tr.setAttribute('id', `${pulledArray[i]}`)
 
-    let td2 = document.createElement('td')
-    td2.textContent = `${pulledData[0].cost_in_credits}`
+        let td1 = document.createElement('td')
+        td1.textContent = `${pulledArray[i]}`
 
-    tr.append(td1, td2)
-    tBody.append(tr)
+        console.log(pulledArray)
+        console.log(pulledData)
+        
+        
+        for(let j = 0; j < pulledData.length; j++){
+            matchCheck = pulledData[j].name
+            if(matchCheck.includes(pulledArray[i])){
+                
+                price = pulledData[j].cost_in_credits
+                
+
+                
+            }else{
+                continue
+            }
+
+        }
+
+        let td2 = document.createElement('td')
+        td2.textContent = `${price}`
+
+        let priceInt = parseInt(price)
+        console.log(priceInt)
+        totalCost = priceInt + totalCost
+
+
+        tr.append(td1, td2)
+        tBody.append(tr)
+
+        
 
 
 
-    
+
+
+
+
+
+    }
+
+    let tFoot = document.querySelector('#cartFooter')
+        let trFoot = document.createElement('tr')
+
+        let tdFoot = document.createElement('td')
+        tdFoot.textContent = `${totalCost}`
+
+
+
+        tFoot.append(trFoot)
+        trFoot.append(tdFoot)
 }
 
 

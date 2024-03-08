@@ -30,7 +30,7 @@
           <!-- Dropdown Structure -->
           <ul id="dropdown1" class="dropdown-content">
           <li class="divider"></li>
-          <li tabindex="0"><a href="">Click items to remove</a>
+          <li id="clearClick" tabindex="0"><a href="">Click to clear cart</a>
           <li id = "buttonclick"><a href="#!">Checkout</a></li>
         </li>
         </ul>
@@ -176,19 +176,28 @@
                                   </div>
 
                                   <!-- Picture preference -->
-                                  <div class="input-field col s6">
+                                  <form action="#" class="col s6">
                                     <br>
-                                    <select class="icons">
-                                      <option value="" disabled selected>Picture Preference</option>
-                                      <option id= "placeholderImages" data-icon="./Assets/Images/Placeholder.jpg">Placeholders</option>
-                                      <option id= "googleImages" data-icon="./Assets/Images/jarjar.jpg">Google Image api</option>
-                                    </select>
+                                    <p>Picture Preference:</p>
+                                    <p>
+                                      <label id="googleApi">
+                                        <input name="group1" type="radio" checked />
+                                        <span>Google Api *limit 300*</span>
+                                      </label>
+                                    </p>
+                                    <p>
+                                      <label id="placeholders">
+                                        <input name="group1" type="radio" />
+                                        <span>Placeholder</span>
+                                      </label>
+                                    </p>
                                     <br>
-                                    <label class="white-text">Picture Style</label>
-                                  </div>
+                                    <br>
+                                  </form>
 
 
                                 <!-- atmosphering slider -->
+                                <br>
                                 <div class="col s6">
                                   <p></p>Max Atmosphering Speed:</p>
                                   <p class="range-field">
