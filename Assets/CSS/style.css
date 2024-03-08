@@ -231,14 +231,23 @@ main{
   }
   
   /* Large smartphones 768px*/
-  @media screen and (max-width: 768px) {
-   
+  @media screen and (max-width: 644px) {
+    main #banner {
+        height: 325px;
+    }
   }
+
   
   /* Small smartphones 576px*/
   @media screen and (max-width: 800px) {
     .starship {
         width: 100%;
+    }
+
+    main #banner {
+        width: 92%;
+        background-position: right;
+        background-size: cover;
     }
   }
 
