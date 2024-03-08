@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="./Assets/CSS/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="./Assets/CSS/checkout.css" />
     <link type="text/css" rel="stylesheet" href="./Assets/CSS/materialize.min.css" media="screen,projection" />
     <link type="text/css" rel="stylesheet" href="./Assets/CSS/checkout.css" />
 
@@ -17,7 +20,11 @@
 
 
 
+
+
+
 </head>
+
 
 <body>
     <div class="centered-container">
@@ -44,6 +51,9 @@
                     <div class="form-group">
                         <label for="zip">Zip Code:</label>
                         <input type="text" id="zip" name="zip" required>
+                    </div>
+                    <div>
+                        <p id="red">*Pay upon arrival</p>
                     </div>
                     <div class="form-group">
                         <input id="submitButton" type="submit" value="Submit">
@@ -94,6 +104,8 @@
                             <td>$8.00</td>
                         </tr>
                         <tr>
+                        </tr>
+                        <tr>
                             <td>Product 7</td>
                             <td>2</td>
                             <td>$10.00</td>
@@ -109,6 +121,8 @@
                             <td>$8.00</td>
                         </tr>
                         <tr>
+                        </tr>
+                        <tr>
                             <td>Product 10</td>
                             <td>2</td>
                             <td>$10.00</td>
@@ -120,6 +134,43 @@
                         </tr>
                         <tr>
                             <td>Product 12</td>
+                            <td>3</td>
+                            <td>$8.00</td>
+                        </tr>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Product 1</td>
+                            <td>2</td>
+                            <td>$10.00</td>
+                        </tr>
+                        <tr>
+                            <td>Product 2</td>
+                            <td>1</td>
+                            <td>$15.00</td>
+                        </tr>
+                        <tr>
+                            <td>Product 3</td>
+                            <td>3</td>
+                            <td>$8.00</td>
+                        </tr>
+                        <tr>
+                            <td>Product 4</td>
+                            <td>2</td>
+                            <td>$10.00</td>
+                        </tr>
+                        <tr>
+                            <td>Product 5</td>
+                            <td>1</td>
+                            <td>$15.00</td>
+                        </tr>
+                        <tr>
+                            <td>Product 6</td>
                             <td>3</td>
                             <td>$8.00</td>
                         </tr>
@@ -174,23 +225,24 @@
 
 
         <!-- Modal Structure -->
-        <div id="modal1" class="modal">
-            <div class="modal-content">
-                <h4>Modal Header</h4>
-                <p>A bunch of text</p>
+        <div id="modal1" class="modal grey darken-4">
+            <div class="modal-content grey darken-4" id="modal-Content">
+                <!-- <h4 id="header">Pickup</h4>
+                <p id="pickup">A bunch of text</p> -->
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer grey darken-4">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
             </div>
         </div>
 
         <!-- <script src="./Assets/JS/script.js"></script> -->
         <script src="./Assets/JS/materialize.min.js"></script>
-        <script src="./Assets/JS/materalize.js"></script>
         <script src="./Assets/JS/checkout.js"></script>
 
     </div>
 
 </body>
+
+</html>
 
 </html>
