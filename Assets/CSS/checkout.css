@@ -41,7 +41,13 @@ body {
 
 .centered-container {
     display: flex;
+    /* margin-left: 150px; */
 }
+
+.centered-container {
+    display: flex;
+}
+
 
 .container {
     max-width: 600px;
@@ -56,13 +62,17 @@ body {
 aside {
     /* position: relative; */
     overflow-y:scroll;
+    /* position: relative; */
+    overflow-y:scroll;
     scroll-behavior: auto;
+    /* left: 300px; */
+    height: 90vh
     /* left: 300px; */
     height: 90vh
 }
 
 #checkout {
-    /* position: absolute; */
+    position: relative;
     /* left: 0px */
     min-width: 600px;
     
@@ -96,10 +106,18 @@ aside {
     font-weight: bold;
     color: black;
 }
+#red {
+    color: red;
+}
 
+.modal-close {
+    color: white;
+}
+
+#modal1 {
+    border-radius: 15px;
+}
 @font-face {
     font-family: Aurebesh;
     src: url(../Aurebesh.ttf);
 }
-
-
