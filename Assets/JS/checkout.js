@@ -1,24 +1,3 @@
-// function checkout() {
-// const card = document.createElement('div');
-// card.setAttribute('class','cards')
-// document.getElementID('checkout').appendChild(card)
-
-// // Create h2 element for title
-// const title = document.createElement('h2');
-// title.textContent = 'Title';
-
-
-// // Create p element for description
-// const description = document.createElement('p');
-// description.textContent = 'Description';
-
-
-// // Append title and description to the card
-
-
-// // Append the card to the body or any other container
-// document.querySelector('.cards').appendChild(title, description);
-
 
 
 makeCheckoutCart()
@@ -53,37 +32,71 @@ function makeCheckoutCart(){
 
 
 function onSubmit(event) {
+const planets = ["Exegol", "Bracca", "Nevarro", "Dantooine", "Chandrila", "Hoth", "Morak", "Ajan Kloss"];
+//Activates modal to pop up
+function onSubmit (event){
     event.preventDefault()
-    modalInstance.open();
+        modalInstance.open();
+    }
+    
+    let modalElement = document.querySelectorAll('#modal1');
+    let modalInstance;
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('hello')
+        modalInstance = M.Modal.init(modalElement,)[0];
+      });
+
+    }
+
+
+const randomPlanet = Math.floor(Math.random() * planets.length)
+   
+
+
+
+const modalDetails = document.querySelector("#submitButton")
+modalDetails.addEventListener('click', modalContent)
+
+
+
+//Makes modal content
+function modalContent(){
+
+    let nuke = document.querySelector('#nukeme')
+    if(nuke !== null){
+        nuke.remove()
+    }
+
+
+    let section = document.createElement('section')
+    section.setAttribute('class','card grey darken-4')
+    section.setAttribute('id', 'nukeme')
+    document.querySelector('#modal-Content').append(section)
+
+    let header = document.createElement('h1')
+    header.style.color = 'white'
+    header.textContent = "Pickup"
+
+    let paragraph = document.createElement('p')
+    paragraph.style.fontSize = '150%'
+    paragraph.style.color = 'white'
+    paragraph.textContent = `Please pickup at ${planets[randomPlanet]}. Please notify us if you cannot pickup vehicle within 2 weeks of pickup time`
+
+    document.querySelector('.card').append(header, paragraph)
+    
+    // if(paragraph !== null){
+    //     paragraph.remove()
+    // }
+
+  
 }
 
-let modalElement = document.querySelectorAll('#modal1');
-let modalInstance;
 
 document.addEventListener('DOMContentLoaded', function () {
     console.log('hello')
     modalInstance = M.Modal.init(modalElement,)[0];
 });
 
-// checkout()
-// function onSubmit(event) {
-//     event.preventDefault()
-//     if (isValid()) {
-//         document.querySelector("#submitButton").setAttribute('class', 'modal-trigger')
-//         // document.getElementById("modal1").style.display = "block"
-
-//     } else {
-//         document.querySelector("#submitButton").removeAttribute('class', 'modal-trigger')
-//         console.log('fsfsfsf')
-//     }
-// }
-
-// function isValid() {
-//     return (document.querySelector('#name').value !== "" &&
-//         document.querySelector('#email').value !== "" &&
-//         document.querySelector('#address').value !== "" &&
-//         document.querySelector('#city').value !== "" &&
-//         document.querySelector('#zip').value !== "")
-// }
 
 
