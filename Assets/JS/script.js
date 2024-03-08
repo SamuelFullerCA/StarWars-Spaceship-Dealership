@@ -77,7 +77,7 @@ async function starshipCards(){
       let fetchedData = await response.json()
       console.log(fetchedData)
       imageData = fetchedData
-    
+      console.log('key1')
       let maxxed = Object.keys(imageData).length
 
       if (maxxed === 1){
@@ -86,7 +86,7 @@ async function starshipCards(){
         let fetchedData = await response.json()
         console.log(fetchedData)
         imageData = fetchedData
-
+        console.log('key2')
         let maxxed = Object.keys(imageData).length
 
         if(maxxed === 1){
@@ -96,7 +96,7 @@ async function starshipCards(){
           let fetchedData = await response.json()
           console.log(fetchedData)
           imageData = fetchedData
-
+          console.log('key3')
           let maxxed = Object.keys(imageData).length
 
           if (maxxed === 1){
@@ -1059,7 +1059,7 @@ function addCartClick1(event){
   
     value = event.target.value
 
-    if(value === "unknown" || alue === "n/a"){
+    if(value === "unknown" || value === "n/a"){
       return
     }
 
