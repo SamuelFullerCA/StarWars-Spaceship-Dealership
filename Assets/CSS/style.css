@@ -51,6 +51,16 @@ main{
         background-color: #212121;
         color: aliceblue;
         border-radius: 25px;
+
+    
+    }
+
+     /*styles the banner card */
+     #banner{
+        height: 35vh;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 15px;
+
     }
 
     /*styles the banner card */
