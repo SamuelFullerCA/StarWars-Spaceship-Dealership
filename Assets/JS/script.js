@@ -18,16 +18,12 @@ async function searhApi(){
   //assigns the api with the search parameter of the users input to a variable
   userSearch = `https://swapi.tech/api/starships/?name=${formValue}`
 
-  
-  
-  
   //fetches the data and stores it to the catchall variable
   const response2 = await fetch(userSearch)
   let fetchedData2 = await response2.json()
   console.log(fetchedData2)
   searchedDataSpecific = fetchedData2
 
-  
   //deletes the cards generated from previous search
   const previousCards = document.querySelector('#divWrap')
   if (previousCards !== null){
@@ -49,7 +45,6 @@ async function searhApiFiltered(){
 
   //runs the function to create cards
   filteredCards()
-  
 }
 
 // function to generate card from the search button
@@ -68,20 +63,27 @@ async function starshipCards(){
     let starshipCard = document.createElement('section')
     starshipCard.setAttribute('class', ` card center-align starship ship${i}`)
 
-    // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
-    // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
-
+    //saftey net to run our two backup api keys when the previous one is maxed out (max is 100 searches)
+    //starts by checking if image type selected by user is google image api
     if(localStorage.getItem('imageType') === 'googleApi'){
-      test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyAgnhWXX_mxAWDwubyCUarTjY_Ba61uUL4&cx=21a0a191a509143c4&searchType=image&num=5&q=${searchedDataSpecific.result[i].properties.model}`
+
+      //assigns the api fetch link to a variable
+      test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=5&q=${searchedDataSpecific.result[i].properties.model}`
+      
+      //fetches the data and stores it in a catchall variable
       const response = await fetch(test2)
       let fetchedData = await response.json()
       console.log(fetchedData)
       imageData = fetchedData
       console.log('key1')
+
+      //set a variable that finds the length of the data gather from the fetch wich should be 5 as it is pulling 5 images
       let maxxed = Object.keys(imageData).length
 
+      //if the api key is maxed out it the object fetched is only 1 in length and the 1 is error
+      //repeat process for two more keys
       if (maxxed === 1){
-        backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=5&q=${searchedDataSpecific.result[i].properties.model}`
+        backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyAgnhWXX_mxAWDwubyCUarTjY_Ba61uUL4&cx=21a0a191a509143c4&searchType=image&num=5&q=${searchedDataSpecific.result[i].properties.model}`
         const response = await fetch(backup1)
         let fetchedData = await response.json()
         console.log(fetchedData)
@@ -90,7 +92,6 @@ async function starshipCards(){
         let maxxed = Object.keys(imageData).length
 
         if(maxxed === 1){
-          //need keanus key
           backup2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBkW2WaIkGC2twtTZJVrgNQUuDBFv5Ut90&cx=d51f763a8ffcb4269&searchType=image&num=5&q=${searchedDataSpecific.result[i].properties.model}`
           const response = await fetch(backup1)
           let fetchedData = await response.json()
@@ -100,16 +101,17 @@ async function starshipCards(){
           let maxxed = Object.keys(imageData).length
 
           if (maxxed === 1){
+
+            //once all 3 keys are maxed out it defaults to placeholder images
             localStorage.setItem('imageType', 'placeholders')
           }
         }
       }
     } 
 
-
- 
     //generates the image 
     let starshipImg =  document.createElement('IMG')
+    //if statement to generate the image based of the filter selected
     if(localStorage.getItem('imageType') === 'placeholders'){
       starshipImg.src = './Assets/Images/Placeholder.jpg'
     }else{
@@ -122,8 +124,8 @@ async function starshipCards(){
         }
     }
   }
-    // placeholder for max image search
     
+    //sets image size and attributes
     starshipImg.setAttribute('width', '275')
     starshipImg.setAttribute('height', '150')
     starshipImg.setAttribute('class', 'imgCss')
@@ -356,12 +358,11 @@ passengersYes.addEventListener("click", function(){
     localStorage.setItem('suppotPassengers',  "yes")
 })
 
-//dropdown multi-selct functionality and array
+//dropdown multi-selct functionality and array this was pulled from materalize
 document.addEventListener("DOMContentLoaded", function () {
   const selects = document.querySelector("select");
   M.FormSelect.init(selects, {});
   const selectOption = document.querySelector("#option-select");
-    
   selectOption.addEventListener("change", function () {
     const instance = M.FormSelect.getInstance(selectOption);
     const selectedValues = instance.getSelectedValues();
@@ -386,44 +387,60 @@ localStorage.setItem("$$$$added", 'false')
 localStorage.setItem("$$$$$added", 'false')
 
 //price array storage for all 5 ranges cooperate here 
-//NEED TO ADD NOTES INSIDE EACH (sam is writing this to himself incase he forgets)
-  //price array storage for first range
+//*I only wrote notes in the first range as the notes would be the same for each range*
+//price array storage for first range
 const priceRange1 = document.querySelector('#price1')
 priceRange1.addEventListener("click", function(){
   
+  //checks if the price range has been added which means if the user is slicked to remove the range
   if(localStorage.getItem("$added") === 'true'){
+
+    //sets the array to nothing
     priceArray = []
   
+    //pulls the array in local storange incase there are other ranges already in there
     let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
     
+    //safeguard for if there are not other ranges in the array
     if(pulledArray === null){
       pulledArray = priceArray
     }else {
       priceArray = pulledArray
     }
     
+    //removes the range from the array
     priceArray = priceArray.filter(e => e !== 'range1')
     
+    //relogs the array to local storage
     window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
+    //marks the array as not added
     localStorage.setItem("$added", 'false')
+
+  // else the range has not yet been added meaning the user is clicked to turn it on
   }else{
-    priceArray = []
+
+  //set the array to nothing
+  priceArray = []
   
+  //pulls the array from local storage incase there are other ranges already in there
   let pulledArray = JSON.parse(localStorage.getItem(`priceArray`))
   
+  //safeguard for if there are not other ranges in the array
   if(pulledArray === null){
     pulledArray = priceArray
   }else {
     priceArray = pulledArray
   }
   
+  // adds the selected range
   priceArray.push('range1')
   
+  //relogs the array to local storage
   window.localStorage.setItem('priceArray', JSON.stringify(priceArray))
-    localStorage.setItem("$added", 'true')
-  
+  //marks the aray as added
+  localStorage.setItem("$added", 'true')
   }
-  })
+})
   //price array storage for first range
 const priceRange2 = document.querySelector('#price2')
 priceRange2.addEventListener("click", function(){
@@ -535,7 +552,8 @@ priceRange4.addEventListener("click", function(){
   
   }
   })
-  //price array storage for first range
+
+//price array storage for first range
 const priceRange5 = document.querySelector('#price5')
 priceRange5.addEventListener("click", function(){
 
@@ -594,21 +612,172 @@ async function filteredCards(){
   //for loop generating cards
   loop1: for(i = 0; i < searchedData.length; i++){
 
+
+//                                                                  vv START OF FILTERS vv
+
+
+  //filter for unavaliable ships option
+  if(localStorage.getItem('unavaliableShip') === 'no'){
+    if (searchedData[i].cost_in_credits === 'unknown'){
+      continue;
+    }
+  }
+
+  //price filters
+  let filterArray = JSON.parse(localStorage.getItem(`priceArray`))
+  let costFilterVal = searchedData[i].cost_in_credits
+  //price filters
+  let numberVal = parseInt(costFilterVal)
+  //price filters
+  if(filterArray.length >= 1){
+    if(filterArray.includes('range1') || filterArray.includes('range2') || filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
+      if(numberVal > 100001){
+        if(filterArray.includes('range2') || filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
+          if(numberVal > 1000001){
+            if(filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
+              if(numberVal > 10000000){
+                if(filterArray.includes('range4') || filterArray.includes('range5')){
+                  if(numberVal > 100000000){
+                    if(filterArray.includes("range5")){
+                      if(numberVal > 1000000000000000){
+                      }else if(localStorage.getItem('$$$$$added') === 'false' ){
+                      continue
+                      }
+                    }else{
+                      continue
+                    }
+                  }else if(localStorage.getItem('$$$$added') === 'false' ){
+                    continue
+                  }
+                }else{
+                  continue
+                }
+              }else if(localStorage.getItem('$$$added') === 'false' ){
+                continue
+              }
+            }else{
+              continue
+            }
+          }else if(localStorage.getItem('$$added') === 'false' ){
+            continue
+          }
+        }else{
+          continue
+        }
+      }else if(localStorage.getItem('$added') === 'false' ){
+        continue
+      }
+    }
+  } 
+
+  //filter for hyperdrive class option
+  let storedHClass = localStorage.getItem('hclassValue')
+  let storedHClassInt = parseInt(storedHClass)
+
+  if(storedHClassInt !== 4){
+    console.log('0')
+    console.log(storedHClassInt)
+
+    if(storedHClassInt === 3){
+      if(searchedData[i].hyperdrive_rating > 3){
+        console.log('1')
+        continue
+      }
+    }else if (storedHClassInt === 2){
+      if(searchedData[i].hyperdrive_rating > 2){
+      console.log('2')
+      continue
+      }
+    }else if (storedHClassInt === 1){
+      if(searchedData[i].hyperdrive_rating > 1){
+      console.log('3')
+      continue
+      }
+    }else if (storedHClassInt === 0){
+        if(searchedData[i].hyperdrive_rating > 0)
+        console.log('4')
+        continue
+      }
+  }
+
+
+  //filter for atmosphering speed option option
+  //converts the speed of the ship to a integer and assigns it to a new variable
+  let speedInterm = searchedData[i].max_atmosphering_speed
+  let speedInNum = parseInt(speedInterm)
+
+  //converts the speed of the slider to a integer and assigns it to a new variable
+  let localSpeedInterum = localStorage.getItem('speedValue')
+  let localSpeedNum = parseInt(localSpeedInterum)
+
+  //compares integer of ships speed to integer of value set on slider
+  if(localStorage.getItem('speedValue') !== 8000){
+   if (localSpeedNum === 2000){
+       localStorage.setItem('speedValue', "8000")
+   }
+   if(speedInNum > localSpeedNum){
+     continue
+   }
+  }
+
+  //filter for can show unknown speed option
+  if(localStorage.getItem('speed') === 'no'){
+    if (searchedData[i].max_atmosphering_speed === "0" || searchedData[i].max_atmosphering_speed === "unknown" || searchedData[i].max_atmosphering_speed === "n/a"){
+        continue
+    }
+  }
+
+  //filter for can support passengers option
+  if(localStorage.getItem('suppotPassengers') === 'no'){
+    if (searchedData[i].passengers === "0" || searchedData[i].passengers === "unknown" || searchedData[i].passengers === "n/a"){
+    }else {
+      continue;
+    }
+  }
+
+  //filter for star ship class options
+  //converts the class pulled from the api to lowercase for comparison
+  dataString = searchedData[i].starship_class
+  let lowerCase = dataString.toLowerCase()
+
+  //if the class of the ship is included in the array made by selecting in the filter then..
+  //..the card generates, if not, current iteration of card generating loop is skipped
+  if(classArray !== undefined){
+    loop2: for(let j = 0; j < classArray.length; j++){
+      if(lowerCase.includes(classArray[j])){
+        break
+      }else if(j === classArray.length -1 ) {
+        continue loop1
+      }
+    }
+  }
+
+
+//                                                                  ^^ END OF FILTERS ^^
+
+
     //generates the card
     let starshipCard = document.createElement('section')
     starshipCard.setAttribute('class', ` card center-align starship ship${i}`)
 
-    // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
-    // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
+    //saftey net to run our two backup api keys when the previous one is maxed out (max is 100 searches)
+    //starts by checking if image type selected by user is google image api
     if(localStorage.getItem('imageType') === 'googleApi'){
+      //assigns the api fetch link to a variable
       test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyAgnhWXX_mxAWDwubyCUarTjY_Ba61uUL4&cx=21a0a191a509143c4&searchType=image&num=5&q=${searchedData[i].model}`
+      
+      //fetches the data and stores it in a catchall variable
       const response = await fetch(test2)
       let fetchedData = await response.json()
       console.log(fetchedData)
       imageData = fetchedData
       console.log('Sams key')
+
+      //set a variable that finds the length of the data gather from the fetch wich should be 5 as it is pulling 5 images
       let maxxed = Object.keys(imageData).length
 
+      //if the api key is maxed out it the object fetched is only 1 in length and the 1 is error
+      //repeat process for two more keys
       if (maxxed === 1){
         backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=5&q=${searchedData[i].model}`
         const response = await fetch(backup1)
@@ -629,6 +798,8 @@ async function filteredCards(){
           let maxxed = Object.keys(imageData).length
 
           if (maxxed === 1){
+
+            //once all 3 keys are maxed out it defaults to placeholder images
             localStorage.setItem('imageType', 'placeholders' )
           }
         }
@@ -650,9 +821,8 @@ async function filteredCards(){
        }
    }
  }
-    
-    // placeholder for max image search
-    // starshipImg.src = './Assets/Images/Placeholder.jpg'
+
+    //sets image size and attributes
     starshipImg.setAttribute('width', '275')
     starshipImg.setAttribute('height', '150')
     starshipImg.setAttribute('class', 'imgCss')
@@ -665,60 +835,6 @@ async function filteredCards(){
     //generates the word cost I put this here so the word "cost" sits about the actuall number
     let costText = document.createElement('h4')
     costText.textContent = `Cost:`
-
-    //filter for unavaliable option
-    if(localStorage.getItem('unavaliableShip') === 'no'){
-      if (searchedData[i].cost_in_credits === 'unknown'){
-        continue;
-      }
-    }
-    
-    //price filters
-    let filterArray = JSON.parse(localStorage.getItem(`priceArray`))
-    let costFilterVal = searchedData[i].cost_in_credits
-    //price filters
-    let numberVal = parseInt(costFilterVal)
-    //price filters
-    if(filterArray.length >= 1){
-      if(filterArray.includes('range1') || filterArray.includes('range2') || filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
-        if(numberVal > 100001){
-          if(filterArray.includes('range2') || filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
-            if(numberVal > 1000001){
-              if(filterArray.includes('range3') || filterArray.includes('range4') || filterArray.includes('range5')){
-                if(numberVal > 10000000){
-                  if(filterArray.includes('range4') || filterArray.includes('range5')){
-                    if(numberVal > 100000000){
-                      if(filterArray.includes("range5")){
-                        if(numberVal > 1000000000000000){
-                        }else if(localStorage.getItem('$$$$$added') === 'false' ){
-                          continue
-                        }
-                      }else{
-                        continue
-                      }
-                    }else if(localStorage.getItem('$$$$added') === 'false' ){
-                      continue
-                    }
-                  }else{
-                    continue
-                  }
-                }else if(localStorage.getItem('$$$added') === 'false' ){
-                  continue
-                }
-              }else{
-                continue
-              }
-            }else if(localStorage.getItem('$$added') === 'false' ){
-              continue
-            }
-          }else{
-            continue
-          }
-        }else if(localStorage.getItem('$added') === 'false' ){
-          continue
-        }
-      }
-     } 
     
     //generates the cost in credits
     let starshipCost = document.createElement('h4')
@@ -740,25 +856,6 @@ async function filteredCards(){
     let shipMglt = document.createElement('p')
     shipMglt.textContent = `MGLT: ${searchedData[i].MGLT} `
 
-    //filter for hyperdrive class option
-    if(localStorage.getItem('hclassValue') !== 4){
-      if(localStorage.getItem('hclassValue') == 3){
-        if(searchedData[i].hyperdrive_rating > 3)
-        continue
-      }else if (localStorage.getItem('hclassValue') == 2){
-        if(searchedData[i].hyperdrive_rating > 2)
-        continue
-      }else if (localStorage.getItem('hclassValue') == 1){
-        if(searchedData[i].hyperdrive_rating > 1)
-        continue
-      }else if (localStorage.getItem('hclassValue') == 0){
-        if(searchedData[i].hyperdrive_rating > 0)
-        continue
-      }
-    }
-
-    
-
     // generates the hyperdrive rating text
     let shipHdrive = document.createElement('p')
     shipHdrive.textContent = `Hyperdrive Rating: ${searchedData[i].hyperdrive_rating} `
@@ -772,10 +869,10 @@ async function filteredCards(){
     addCart.textContent = `Purchase`
 
 
-//                                               vv  STAR OF CARD REVEAL SECTION vv
+//                                               vv  START OF CARD REVEAL SECTION vv
 
 
-     //generates the activator for card reveal
+    //generates the activator for card reveal
     let revealActivator = document.createElement('i');
     revealActivator.setAttribute('class', 'material-icons right');
     revealActivator.textContent = "more_vert";
@@ -816,33 +913,6 @@ async function filteredCards(){
     revealLength.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
     revealLength.textContent = `Length: ${searchedData[i].length}`;
 
-
-     //filter for atmosphering speed option option
-
-     let speedInterm = searchedData[i].max_atmosphering_speed
-     let speedInNum = parseInt(speedInterm)
-
-     let localSpeedInterum = localStorage.getItem('speedValue')
-     let localSpeedNum = parseInt(localSpeedInterum)
-
-     if(localStorage.getItem('speedValue') !== 8000){
-      if (localSpeedNum === 2000){
-          localStorage.setItem('speedValue', "8000")
-      }
-      if(speedInNum > localSpeedNum){
-        continue
-      }
-    }
-
-     //filter for can show unknown speed option
-     if(localStorage.getItem('speed') === 'no'){
-      if (searchedData[i].max_atmosphering_speed === "0" || searchedData[i].max_atmosphering_speed === "unknown" || searchedData[i].max_atmosphering_speed === "n/a"){
-        continue
-      }
-    }
-        
-    
-
     //generates the atmosphering speed value for card reveal
     let revealSpeed = document.createElement('p');
     revealSpeed.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
@@ -852,14 +922,6 @@ async function filteredCards(){
     let revealCrew = document.createElement('p');
     revealCrew.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
     revealCrew.textContent = `Crew Size: ${searchedData[i].crew}`;
-
-    //filter for can support passengers option
-    if(localStorage.getItem('suppotPassengers') === 'no'){
-      if (searchedData[i].passengers === "0" || searchedData[i].passengers === "unknown" || searchedData[i].passengers === "n/a"){
-      }else {
-        continue;
-      }
-    }
 
     //generates the passengers value for card reveal
     let revealPassengers = document.createElement('p');
@@ -880,23 +942,6 @@ async function filteredCards(){
     let revealMGLT = document.createElement('p');
     revealMGLT.setAttribute('style', 'font-size: 13px; text-align: left; line-height: 15px;');
     revealMGLT.textContent = `MGLT: ${searchedData[i].MGLT}`;
-
-
-    
-  //filter for star ship class options
-  dataString = searchedData[i].starship_class
-  let lowerCase = dataString.toLowerCase()
-  
-
-    if(classArray !== undefined){
-      loop2: for(let j = 0; j < classArray.length; j++){
-        if(lowerCase.includes(classArray[j])){
-          break
-        }else if(j === classArray.length -1 ) {
-          continue loop1
-        }
-      }
-    }
 
     //generates the class value for card revea
     let revealClass = document.createElement('p');
@@ -935,6 +980,7 @@ async function filteredCards(){
     //for loop to apply to each button
       for (let k = 0; k < cartBtn2.length; k++) {
         
+        //gives each button the ability to run the addCartClick2 function when clicked
         cartBtn2[k].addEventListener('click', addCartClick2);
       }
     
@@ -949,23 +995,31 @@ async function pageload(){
 
   //if loop to check if data has already been pulled and store in local storage
   if(JSON.parse(localStorage.getItem(`swapitech`)) === null || JSON.parse(localStorage.getItem(`swapitech`)) === undefined || JSON.parse(localStorage.getItem(`swapitech`)) === ""){
-    for(let i = 2; i <= 75; i++){
+    let dataWithLink = []
+    //sears the api link to a value
+    userSearch = `https://swapi.tech/api/starships/?page=2&limit=36`
       
-      //sears the api link to a value
-      userSearch = `https://swapi.tech/api/starships/${i}`
-  
-      //fetches the data and stores it to the catchall variable
-      const response2 = await fetch(userSearch)
-      let fetchedData2 = await response2.json()
+    //fetches the data and stores it to the catchall variable
+    let response2 = await fetch(userSearch)
+    let fetchedData2 = await response2.json()
+    dataWithLink = fetchedData2
+    console.log(dataWithLink)
 
-  
+    //the data only provides a link to the specific ship withing the api istead of the details
+    //when searching the specific ship we get the details thats what this for loop is doing
+    //searching each of the 36 ships and adding them to the array
+    for(let i = 0; i <= 35; i++){
+      userSearch = `${dataWithLink.results[i].url}`
+      response2 = await fetch(userSearch)
+      fetchedData2 = await response2.json()
+
       //stops the current iteration of the loop if the pull returns not...
-      //...found {this happens alot becuase the 36 ships are randomly scattered on calues of 0-76
+      //...found **Ths is an old safteynet that im keeping as a precaution*
       if (fetchedData2.message ==='Not found'){
         continue
       }
 
-      //pushes the properties of the data into an array
+      // pushes the properties of the data into an array
       searchedData.push(fetchedData2.result.properties)
 
       //puts the array with data in loca storage
@@ -973,6 +1027,7 @@ async function pageload(){
 
       //pulls the searched data for next loop?
       searchedData = JSON.parse(localStorage.getItem(`swapitech`))
+      
     }
   } 
   //used to ensure data is present
@@ -988,143 +1043,120 @@ dropdownClick.addEventListener('click', polulateCart);
 let inCart = []
 function polulateCart(){
 
-
+  //pulls the array of items added to cart
   cartData = JSON.parse(localStorage.getItem(`cartArray`))
 
-  console.log(cartData)
-  
-  // let nuke = document.querySelector('.cartItem')
-  // console.log(nuke)
- 
-
+  //for loop for generating the cart items in the dropdown
   for(let i = 0; i < searchedData.length; i++ ){
-    // nuke.remove()
-
+    
+    //assigns a indexed ship to a value
     nameVal = searchedData[i].name
 
+    //for loop for comparing current indexed ship to each ship name in the cart array
     for(let j = 0; j < cartData.length; j++){
-      // console.log(nameVal)
+      
+      //if statements to look for a match
       if(nameVal.includes(cartData[j])){
+        //if statement to stop doubles
         if(inCart.includes(cartData[j])){
           continue
         }
         console.log('MatchFound')
-        
 
-          // let wrap = document.createElement('div')
-          // wrap.setAttribute('id', 'cartWrap')
-          // wrap.setAttribute('class', 'dropdown-content')
+        //generates the li
+        let item = document.createElement('li')
+        item.setAttribute('tabindex', '0')
 
-          
-          let item = document.createElement('li')
-          item.setAttribute('tabindex', '0')
+        //generates the name and cost
+        let itemVal = document.createElement('a')
+        itemVal.setAttribute('href', '#!')
+        itemVal.setAttribute('class', 'cartItem')
+        itemVal.setAttribute('id', `${cartData[j]}`)
+        itemVal.textContent = `${cartData[j]} | ${searchedData[i].cost_in_credits} Credits`
 
-          let itemVal = document.createElement('a')
-          itemVal.setAttribute('href', '#!')
-          itemVal.setAttribute('class', 'cartItem')
-          itemVal.setAttribute('id', `${cartData[j]}`)
-          itemVal.textContent = `${cartData[j]} | ${searchedData[i].cost_in_credits} Credits`
+        //appends the name and cost to the li, and appends the li to the dropdown menu
+        let physicalCart = document.querySelector('.dropdown-content')
+        item.append(itemVal)
+        physicalCart.append(item)
 
-        
-          let physicalCart = document.querySelector('.dropdown-content')
-          item.append(itemVal)
-          physicalCart.append(item)
+        //puts the item back in the cart array that got refreshed
+        inCart.push(cartData[j])
 
-          inCart.push(cartData[j])
-
-          // let cartItem = document.querySelectorAll('.cartItem')
-          // console.log(cartItem)
-          // for(let k = 0; k < cartItem.length; k++){
-          // cartItem[k].addEventListener("click", function(event){
-
-          //   value = event.target.id
-          //   physicalPing = event.target
-      
-
-            // let newArray = JSON.parse(localStorage.getItem(`cartArray`))
-
-            // let cartArray = newArray.filter(e => e !== `${value}`)
-
-            localStorage.setItem('cartArray', JSON.stringify(inCart))
-            console.log(inCart)
-            
-            
-          
-
-            // physicalPing.remove()
-
-          // })
-            
-          }else{
-            continue
-          }
-
-          // universalCartData = cartItem
-          
-          
-        
-    
+        //stores the array again to local storage
+        localStorage.setItem('cartArray', JSON.stringify(inCart))
+      }else{
+        continue
       }
+    }
+  }
 }
 
-}
-
-//function to add items to card for the searchApi function
+//function to add items to cart array for the searchApi function
 function addCartClick1(event){
   
-    value = event.target.value
-
-    if(value === "unknown" || value === "n/a"){
-      return
-    }
-
-  let pulledCart = JSON.parse(localStorage.getItem(`cartArray`))
- 
- 
-  idName = event.target.id
-  console.log(idName)
-
-  cartItems = []
-
-  if(pulledCart === null){
-    pulledCart = cartItems
-  }else {
-    cartItems = pulledCart
-  }
-
-  cartItems.push(idName)
-
-
-
-  localStorage.setItem('cartArray', JSON.stringify(cartItems))
-}
-    
-//function to add items to card for the searchApiFiltered function 
-function addCartClick2(event){
-
+  // grabs the value assigned when card was generated with the ships actual value
   value = event.target.value
 
+  //filter so the user cant add unavliable ships
   if(value === "unknown" || value === "n/a"){
     return
   }
 
+  //pulls the cart array
   let pulledCart = JSON.parse(localStorage.getItem(`cartArray`))
-  
+ 
+  //gets the id from the button which was assigned the name of the ship on the card it was generated to
   idName = event.target.id
-  console.log(idName)
 
+  //creates an array
   cartItems = []
 
+  //checks if the cart array is empty
   if(pulledCart === null){
     pulledCart = cartItems
   }else {
     cartItems = pulledCart
   }
 
+  //adds the new id (which is the ship name) to the array
   cartItems.push(idName)
 
+  //stores the array to local storage
+  localStorage.setItem('cartArray', JSON.stringify(cartItems))
+}
+  //these cards to the same thing and i thing i should have compined them into 1 -Sam
+//function to add items to card for the searchApiFiltered function 
+function addCartClick2(event){
 
+  // grabs the value assigned when card was generated with the ships actual value
+  value = event.target.value
 
+  //filter so the user cant add unavliable ships
+  if(value === "unknown" || value === "n/a"){
+    return
+  }
+
+  //pulls the cart array
+  let pulledCart = JSON.parse(localStorage.getItem(`cartArray`))
+  
+  //gets the id from the button which was assigned the name of the ship on the card it was generated to
+  idName = event.target.id
+  console.log(idName)
+
+  //creates an array
+  cartItems = []
+
+  //checks if the cart array is empty
+  if(pulledCart === null){
+    pulledCart = cartItems
+  }else {
+    cartItems = pulledCart
+  }
+
+  //adds the new id (which is the ship name) to the array
+  cartItems.push(idName)
+
+//stores the array to local storage
   localStorage.setItem('cartArray', JSON.stringify(cartItems))
 }
 
@@ -1132,6 +1164,6 @@ function addCartClick2(event){
 const clearCart = document.querySelector('#clearClick')
 clearCart.addEventListener("click", function(){
 
+  //sets the cart array to nothing
   localStorage.setItem('cartArray', JSON.stringify([]))
-
 })

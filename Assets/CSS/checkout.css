@@ -41,6 +41,7 @@ body {
 
 .centered-container {
     display: flex;
+    transform: translateZ(1px);
     /* margin-left: 150px; */
 }
 
@@ -66,9 +67,9 @@ aside {
     overflow-y:scroll;
     scroll-behavior: auto;
     /* left: 300px; */
-    height: 90vh
+    height: 90vh;
     /* left: 300px; */
-    height: 90vh
+    height: 90vh;
 }
 
 #checkout {
@@ -130,4 +131,67 @@ aside {
         display: block;
     }
   }
+
+  @media screen and (max-width: 644px) {
+    .centered-container {
+        display: block;
+        width: 80%;
+    }
+  }
+
+
+  /* coppied over header code from style.css */
+  header{
+    font-family: Starjedi;
+
+    /* styles the navbar */
+    #navbarcss{
+       
+        border-radius: 50px;
+        max-width: 80vw;
+        margin: auto;
+     }
+     
+      /* styles the nav bar text */
+    .pageName{
+        margin-left: 25px;
+        font-size: 30px;
+        font-family: Aurebesh;
+    }
+
+    #dealership {
+        font-family: Starjedi;
+        color: #ffe81f;
+        margin-left: 0px;
+    }
+
+    .dropdown-trigger {
+        font-size: 30px;
+    }
+}
+
+#headercss {
+}
+
+
+
+
+#starScrolling {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .pageName{
+    margin-left: 25px;
+    font-size: 30px;
+    font-family: Aurebesh;
+}
+
+#dealership {
+    font-family: Starjedi;
+    color: #ffe81f;
+    margin-left: 0px;
 }
