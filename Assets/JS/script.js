@@ -72,7 +72,7 @@ async function starshipCards(){
     // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
 
     if(localStorage.getItem('imageType') === 'googleApi'){
-      test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedDataSpecific.result[i].properties.model}`
+      test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyAgnhWXX_mxAWDwubyCUarTjY_Ba61uUL4&cx=21a0a191a509143c4&searchType=image&num=5&q=${searchedDataSpecific.result[i].properties.model}`
       const response = await fetch(test2)
       let fetchedData = await response.json()
       console.log(fetchedData)
@@ -81,7 +81,7 @@ async function starshipCards(){
       let maxxed = Object.keys(imageData).length
 
       if (maxxed === 1){
-        backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=3&q=${searchedDataSpecific.result[i].properties.model}`
+        backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=5&q=${searchedDataSpecific.result[i].properties.model}`
         const response = await fetch(backup1)
         let fetchedData = await response.json()
         console.log(fetchedData)
@@ -91,7 +91,7 @@ async function starshipCards(){
 
         if(maxxed === 1){
           //need keanus key
-          backup2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBkW2WaIkGC2twtTZJVrgNQUuDBFv5Ut90&cx=d51f763a8ffcb4269&searchType=image&num=3&q=${searchedDataSpecific.result[i].properties.model}`
+          backup2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBkW2WaIkGC2twtTZJVrgNQUuDBFv5Ut90&cx=d51f763a8ffcb4269&searchType=image&num=5&q=${searchedDataSpecific.result[i].properties.model}`
           const response = await fetch(backup1)
           let fetchedData = await response.json()
           console.log(fetchedData)
@@ -113,8 +113,15 @@ async function starshipCards(){
     if(localStorage.getItem('imageType') === 'placeholders'){
       starshipImg.src = './Assets/Images/Placeholder.jpg'
     }else{
-      starshipImg.setAttribute('src', `${imageData.items[0].link}`)
+      for(let l = 0; l < imageData.items.length; l++){
+        if(imageData.items[l].fileFormat === "image/"){
+          continue
+        }else{
+          starshipImg.setAttribute('src', `${imageData.items[l].link}`)
+          break
+        }
     }
+  }
     // placeholder for max image search
     
     starshipImg.setAttribute('width', '275')
@@ -594,7 +601,7 @@ async function filteredCards(){
     // NOTE API BLOCKED OUT TO AVOID HITTING MAX FETCHES
     // UNLESS WORKING ON IMAGE FUNCTIONALITY USE PLACEHOLDER
     if(localStorage.getItem('imageType') === 'googleApi'){
-      test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyD3Lznxmq6WeZS28GXXXD3JQE5_m1PCatU&cx=21a0a191a509143c4&searchType=image&num=3&q=${searchedData[i].model}`
+      test2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyAgnhWXX_mxAWDwubyCUarTjY_Ba61uUL4&cx=21a0a191a509143c4&searchType=image&num=5&q=${searchedData[i].model}`
       const response = await fetch(test2)
       let fetchedData = await response.json()
       console.log(fetchedData)
@@ -603,7 +610,7 @@ async function filteredCards(){
       let maxxed = Object.keys(imageData).length
 
       if (maxxed === 1){
-        backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=3&q=${searchedData[i].model}`
+        backup1 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBI_Z3c7bX95-Or-Jth1eEFfXc2kuqMjfA&cx=c45afde7ad36d4a52&searchType=image&num=5&q=${searchedData[i].model}`
         const response = await fetch(backup1)
         let fetchedData = await response.json()
         console.log(fetchedData)
@@ -613,7 +620,7 @@ async function filteredCards(){
 
         if (maxxed === 1){
           //need keanus key
-          backup2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBkW2WaIkGC2twtTZJVrgNQUuDBFv5Ut90&cx=d51f763a8ffcb4269&searchType=image&num=3&q=${searchedData[i].model}`
+          backup2 = `https://www.googleapis.com/customsearch/v1?key=AIzaSyBkW2WaIkGC2twtTZJVrgNQUuDBFv5Ut90&cx=d51f763a8ffcb4269&searchType=image&num=5&q=${searchedData[i].model}`
           const response = await fetch(backup2)
           let fetchedData = await response.json()
           console.log(fetchedData)
@@ -629,13 +636,21 @@ async function filteredCards(){
     }
   
 
-    //generates the image 
-    let starshipImg =  document.createElement('IMG')
-    if(localStorage.getItem('imageType') === 'placeholders'){
-      starshipImg.src = './Assets/Images/Placeholder.jpg'
-    }else{
-      starshipImg.setAttribute('src', `${imageData.items[0].link}`)
-    }
+   //generates the image 
+   let starshipImg =  document.createElement('IMG')
+   if(localStorage.getItem('imageType') === 'placeholders'){
+     starshipImg.src = './Assets/Images/Placeholder.jpg'
+   }else{
+     for(let l = 0; l < imageData.items.length; l++){
+       if(imageData.items[l].fileFormat === "image/"){
+         continue
+       }else{
+         starshipImg.setAttribute('src', `${imageData.items[l].link}`)
+         break
+       }
+   }
+ }
+    
     // placeholder for max image search
     // starshipImg.src = './Assets/Images/Placeholder.jpg'
     starshipImg.setAttribute('width', '275')

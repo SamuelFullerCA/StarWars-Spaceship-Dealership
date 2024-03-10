@@ -4,6 +4,9 @@
     background-image: url(../Images/backgroundStars.jpg);
 } */
 
+.testspacing{
+    justify-content: space-between;
+}
 
 #starScrolling {
     position: fixed;
