@@ -132,12 +132,36 @@ aside {
     }
   }
 
+  @media screen and (max-width: 780px) {
+    #checkout{
+        margin-top: 100px;
+    }
+  }
+
   @media screen and (max-width: 644px) {
     .centered-container {
         display: block;
         width: 80%;
     }
   }
+
+  @media screen and (max-width: 500px) {
+    .centered-container {
+        justify-content: center;
+        max-width: 90vw;
+    }
+    #checkout{
+        max-width: 80vw;
+        min-width: 80vw;
+        margin-top: 150px;
+
+    }
+  }
+
+td{
+    padding-left: 50px
+}
+
 
 
   /* coppied over header code from style.css */

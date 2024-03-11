@@ -280,5 +280,13 @@ input[type=range] + .thumb.active .value {
 
 
 .cartItem{
-    font-size: 75% !important
+    font-size: 90% !important
+}
+
+.cartColor{
+    color: #ffffff;
+}
+
+.yellowColor{
+    color: #ffe81f !important
 }

@@ -39,7 +39,7 @@ function makeCheckoutCart(){
     //loop to generate each item in the cart to the page
     loop1: for(let i = 0; i < pulledArray.length; i++){
 
-        //generates the tr *I'm not sure what tr or td is but its what you guys used so ill go with it - Sam*
+        //generates the tr
         let tr = document.createElement('tr')
         tr.setAttribute('id', `${pulledArray[i]}`)
         
@@ -47,6 +47,7 @@ function makeCheckoutCart(){
         //generates the td
         let td1 = document.createElement('td')
         td1.textContent = `${pulledArray[i]}`
+        td1.setAttribute('class', 'product')
         
         //for loop to find the data for the item in the cart array withing the swapi data
         for(let j = 0; j < pulledData.length; j++){
@@ -67,6 +68,7 @@ function makeCheckoutCart(){
         //assings a creates the td for price
         let td2 = document.createElement('td')
         td2.textContent = `${price} Credits`
+        
 
         // turns the price to an integer for the total
         let priceInt = parseInt(price)
