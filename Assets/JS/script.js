@@ -1066,11 +1066,12 @@ function polulateCart(){
         //generates the li
         let item = document.createElement('li')
         item.setAttribute('tabindex', '0')
+        item.setAttribute('class', ' grey darken-4 cart')
 
         //generates the name and cost
         let itemVal = document.createElement('a')
         itemVal.setAttribute('href', '#!')
-        itemVal.setAttribute('class', 'cartItem')
+        itemVal.setAttribute('class', 'cartItem white-text')
         itemVal.setAttribute('id', `${cartData[j]}`)
         itemVal.textContent = `${cartData[j]} | ${searchedData[i].cost_in_credits} Credits`
 
