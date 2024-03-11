@@ -9,7 +9,7 @@ To embody the spirit of Star Wars and set the idea that this is an in-unverse de
 Overall when a user loads this application it should feel as though they are really in the Star Wars universe looking to buy a brand new Spaceship!
 
 
-## Table of Contents (Optional)
+## Table of Contents
 
 If your README is long, add a table of contents to make it easy for customers to find what they need.
 
