@@ -1,0 +1,47 @@
+
+
+Into/elevatorpitch, problem statement, user story *1:30min* WILLIE{
+
+}
+	
+
+
+Live demo of the deployed application *5min* SAM{
+
+}
+
+	
+
+Technical details, directions for future development, roles, and wins/losses *1:30min* KEANUE{
+	Technical details{
+		Specific search for starship, or advanced search with filters usees star wars api 
+		for the card deatails and google images api for the images on the cards.
+	}
+
+	directions for future development {
+		Adapt user accounts and profiles and store cart and checkout info to the user on a 
+		server rather than local storage. Implement login/logut featues as well as custiization of
+		a users profile.
+	}
+
+	roles{
+		Willie as project lead and Sam as git master
+	}
+
+	wins/losses{
+		big win as changing our starwars api on thursday after the firs option we had 
+		became unavaliable, meaning if you go to their site you will get a 404.
+
+		big loss was we wanted to implement the ability to remove items from cart witch as it stands doesnt exist
+
+	}
+
+
+
+
+
+}
+
+
+
+	

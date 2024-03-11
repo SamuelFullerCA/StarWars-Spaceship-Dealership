@@ -46,4 +46,34 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   });
 
+//trigers the cart dropdown menu
+const elems = document.querySelectorAll('.dropdown-trigger');
+const instances = M.Dropdown.init(elems,{
+    coverTrigger: false,
+    closeOnClick: false,
+});
 
+// //carousel wrap
+// const wheel = document.querySelector('.carousel');
+// M.Carousel.init(wheel, {})
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let manufact = document.querySelectorAll('select');
+   M.FormSelect.init(manufact, {
+    data:{}
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    let elems = document.querySelectorAll('.modal');
+    M.Modal.init(elems,);
+  });
+  
+
+  
+  
+ 

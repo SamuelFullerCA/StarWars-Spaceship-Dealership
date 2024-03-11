@@ -1,47 +1,292 @@
 
-*{
-    /* background-image: url(../Images/star-wars-spaceships-death-star.avif); */
+/* backround image for page */
+/* body{
+    background-image: url(../Images/backgroundStars.jpg);
+} */
+
+.testspacing{
+    justify-content: space-evenly;
 }
 
-#searchBox{
-   background-color: aliceblue;
+#starScrolling {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  /* all style elements inside the header section are nested in here */
+header{
+    font-family: Starjedi;
+
+    /* styles the navbar */
+    #navbarcss{
+       
+        border-radius: 50px;
+        max-width: 80vw;
+        margin: auto;
+     }
+     
+      /* styles the nav bar text */
+    .pageName{
+        margin-left: 25px;
+        font-size: 30px;
+        font-family: Aurebesh;
+    }
+
+    #dealership {
+        font-family: Starjedi;
+        color: #ffe81f;
+        margin-left: 0px;
+    }
+
+    .dropdown-trigger {
+        font-size: 30px;
+    }
 }
 
-#displayedcards{
-    justify-content: center
+/* Styling for the header */
+#headercss {
 }
 
-.starship{
-    border: 3px solid black;
-    /* width: 400px; */
-    height: 450px;
-}
+/* all style elements inside the mains section are nested in here */
+main{
+    height: 100vh;
 
-#banner{
-    /* messed with margins to align banner with searchbox; */
-    height: 35vh;
-    border: 3px solid black;
-    margin-top: 8px;
-    margin-bottom: 0;
-    margin-left: 0;
-    margin-right: 0;
+    .btn {
+        background-color: gray;
+    }
+
+    /* styles the while searchbox card */
+    #searchBox{
+        background-color: #212121;
+        color: aliceblue;
+        border-radius: 25px;
     
+    }
+
+     /*styles the banner card */
+     #banner{
+        height: 35vh;
+        border: 3px solid rgb(255, 255, 255);
+        border-radius: 15px;
+        
+    }
+
+    /*styles the banner card */
+    #banner{
+        position: relative;
+        height: 300px;
+        width: 1000px;
+        margin-top: 56px;
+        border: 5px solid rgb(255, 255, 255);
+        border-radius: 25px;
+        background-image: url(../Images/featuredDeathstar.jpg);
+        background-size: 100% 100%;
+
+    }
+    
+    #bannerHeader {
+        margin-top: 0px;
+        color: #ffe81f;
+    }
+    
+    .card-content{
+        position: relative;
+        font-family: Starjedi;
+        color: white;
+        margin-left: 10px;
+    }
+
+    .card .card-reveal {
+        background-color: #212121;
+        color: #fff;
+    }
+
+    .card .card-reveal .card-title {
+        color: white;
+    }
+
+
+
+    #banner-text {
+        padding: 0px;
+    }
+    
+
+    /* styles the starship card and everything inside */
+    .starship{
+        border-radius: 15px;
+        background-color: #212121;
+        text-align: center;
+        box-shadow: 7px 7px rgba(82, 82, 82, 0.25);
+        margin: 2%;
+        padding: 15px;
+        
+        /* styles the ship name */
+        h3 {
+            margin-top: 8px;
+            color: aliceblue;
+            font-size: 175%;
+
+         }
+
+         /* styles the ship cost */
+         h4{
+            margin-top: 10px;
+            margin: 0;
+            color: aliceblue;  
+            font-size: 130%; 
+         }
+
+         /* styles the card body 
+         (this only includes model, mglt, and Hdrive rating */
+        #cardBodycss{
+            text-align: left;
+            color: aliceblue;
+        }
+
+        /* styles the purchase button */
+        .addCart{
+            font-size: 75%;
+            color: aliceblue;
+            background-color: rgb(48, 134, 48);
+            width: 90px;
+            height: 40px;
+        }
+
+        /* styles the image */
+        .imgCss{
+            border-radius: 25px;
+        }
+
+    }
 }
 
 
-.imgCss{
-    border-radius: 25px;
+/* Container for all cards */
+#divWrap {
+    width: 95vw;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 2%;
+    margin-top: 0px;
+    width: 95vw;
 }
 
-
-
-.brand-logo{
-    margin-left: 25px;
-    font-family: Aurebesh;
+/* positioning for the search box */
+#searchBoxcss {
+    margin-top: 50px;
+    margin-left: 50px;
+}
+#advanceFilters{
+    border-radius: 15px;
+    /* max-height: 60vh; */
 }
 
+/* modal filter apply button */
+.modal-close{
+    color:aliceblue;
+    border-radius: 15px;
+}
 
+/* starhip class text color in filter modal */
+#classList{
+    color: aliceblue;
+}
+
+/* adds the Aurebesh font */
 @font-face {
     font-family: Aurebesh;
     src: url(../Aurebesh.ttf);
+}
+
+@font-face {
+    font-family: Starjedi;
+    src: url(../Starjedi.ttf);
+}
+
+/* Tablets 992px*/
+@media screen and (max-width: 1139px) {
+    .starship{
+        width: 45%;
+    }
+
+    #divWrap {
+        margin: 5%;
+        margin-top: 0px;
+        
+    }
+
+    #searchBoxcss {
+        width: 93%;
+        margin: 4%;
+        margin-top: 50px;
+        margin-bottom: 0px;
+    }
+
+    #banner {
+        margin: 4%;
+        width: 93%;
+
+    }
+  }
+  
+  /* Large smartphones 768px*/
+  @media screen and (max-width: 644px) {
+    main #banner {
+        height: 325px;
+    }
+  }
+
+  
+  /* Small smartphones 576px*/
+  @media screen and (max-width: 800px) {
+    .starship {
+        width: 100%;
+    }
+
+    main #banner {
+        width: 92%;
+        background-position: right;
+        background-size: cover;
+    }
+  }
+
+
+
+
+
+
+
+/* styling for range inside filter modal */
+input[type=range]::-webkit-slider-thumb {
+  background-color: skyblue;
+}
+input[type=range]::-moz-range-thumb {
+  background-color: skyblue;
+}
+input[type=range]::-ms-thumb {
+  background-color: skyblue;
+}
+/* For the globe and the text inside */
+input[type=range] + .thumb {
+  background-color: blue;
+}
+input[type=range] + .thumb.active .value {
+  color: #fff;
+}
+
+
+.cartItem{
+    font-size: 90% !important
+}
+
+.cartColor{
+    color: #ffffff;
+}
+
+.yellowColor{
+    color: #ffe81f !important
 }

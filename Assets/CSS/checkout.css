@@ -1,0 +1,221 @@
+body{
+    background-image: url(../Images/backgroundStars.jpg);
+}
+/* }
+
+.row {
+    display: flex;
+    width: 75%;
+    height: 75%;
+    margin-top: 300px;
+    flex-wrap: wrap;
+    justify-content: center;
+ 
+
+}
+
+
+#checkout{
+    background-color: #212121;
+    color: aliceblue;
+    border-radius: 25px;
+    width: 75%;
+    height: 50%;
+    margin: center;
+
+}
+
+.cartSum{
+    float: right;
+} */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    /* margin-left: 150px; */
+}
+
+.centered-container {
+    display: flex;
+    transform: translateZ(1px);
+    /* margin-left: 150px; */
+}
+
+.centered-container {
+    display: flex;
+}
+
+
+.container {
+    max-width: 600px;
+    margin: 20px;
+    background-color: #fff;
+    color:  aliceblue;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+aside {
+    /* position: relative; */
+    overflow-y:scroll;
+    /* position: relative; */
+    overflow-y:scroll;
+    scroll-behavior: auto;
+    /* left: 300px; */
+    height: 90vh;
+    /* left: 300px; */
+    height: 90vh;
+}
+
+#checkout {
+    position: relative;
+    /* left: 0px */
+    min-width: 500px;
+    
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+    color:  aliceblue;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color:  aliceblue;
+}
+.form-group input[type="submit"] {
+    background-color: rgb(238, 219, 0);
+    color: #fff;
+    cursor: pointer;
+    color:  aliceblue;
+}
+
+#submitbutton {
+    font-family: Aurebesh;
+    font-weight: bold;
+    color: black;
+}
+#red {
+    color: red;
+}
+
+.modal-close {
+    color: white;
+}
+
+#modal1 {
+    border-radius: 15px;
+}
+@font-face {
+    font-family: Aurebesh;
+    src: url(../Aurebesh.ttf);
+
+}
+
+
+ /* Large smartphones 768px*/
+ @media screen and (max-width: 972px) {
+    .centered-container {
+        display: block;
+    }
+  }
+
+  @media screen and (max-width: 780px) {
+    #checkout{
+        margin-top: 100px;
+    }
+  }
+
+  @media screen and (max-width: 644px) {
+    .centered-container {
+        display: block;
+        width: 80%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .centered-container {
+        justify-content: center;
+        max-width: 90vw;
+    }
+    #checkout{
+        max-width: 80vw;
+        min-width: 80vw;
+        margin-top: 150px;
+
+    }
+  }
+
+td{
+    padding-left: 50px
+}
+
+
+
+  /* coppied over header code from style.css */
+  header{
+    font-family: Starjedi;
+
+    /* styles the navbar */
+    #navbarcss{
+       
+        border-radius: 50px;
+        max-width: 80vw;
+        margin: auto;
+     }
+     
+      /* styles the nav bar text */
+    .pageName{
+        margin-left: 25px;
+        font-size: 30px;
+        font-family: Aurebesh;
+    }
+
+    #dealership {
+        font-family: Starjedi;
+        color: #ffe81f;
+        margin-left: 0px;
+    }
+
+    .dropdown-trigger {
+        font-size: 30px;
+    }
+}
+
+#headercss {
+}
+
+
+
+
+#starScrolling {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .pageName{
+    margin-left: 25px;
+    font-size: 30px;
+    font-family: Aurebesh;
+}
+
+#dealership {
+    font-family: Starjedi;
+    color: #ffe81f;
+    margin-left: 0px;
+}
